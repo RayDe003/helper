@@ -4,29 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="регистрация  и авторизация  и магия с  маршрутами">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo10" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo10" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_2.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_2.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_3.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_3.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_4.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_4.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_5.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_5.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_6.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_6.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/ib_buffer_pool" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/ibdata1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/ibtmp1" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/ibtmp1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/mysql.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/mysql.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/undo_001" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/undo_001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/undo_002" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/undo_002" afterDir="false" />
+    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="короче я пыталась,  но Бд меня послало я обиделась">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/8f239311-7fd9-4f88-935a-4e161f9a9147.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/8f239311-7fd9-4f88-935a-4e161f9a9147/storage_v2/_src_/schema/helper.rg86tw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/8f239311-7fd9-4f88-935a-4e161f9a9147/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/8f239311-7fd9-4f88-935a-4e161f9a9147/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/8f239311-7fd9-4f88-935a-4e161f9a9147/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/8f239311-7fd9-4f88-935a-4e161f9a9147/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/User/UserRegistrationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/Accept.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/AchivementStatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/Achivements.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/Messages.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/NotType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/Notifications.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/Priority.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/SubTask.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/SubTaskStatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/SystemTask.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/Task.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/TaskStatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/UserTask.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/UsersAchivements.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/UsersSystemTask.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/config/sanctum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_03_083324_create_personal_access_tokens_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_03_095049_create_tasks_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_03_095105_create_priorities_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_03_095112_create_users_tasks_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/database/seeders/PrioritiesTableSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo41_tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000004" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000005" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000006" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000007" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000008" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000009" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +68,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="rayde03 &lt;barchugova03@bk.ru&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -255,7 +275,7 @@
       <workItem from="1714628895411" duration="3527000" />
       <workItem from="1714633350531" duration="13434000" />
       <workItem from="1714650130045" duration="2945000" />
-      <workItem from="1714716222629" duration="15840000" />
+      <workItem from="1714716222629" duration="16206000" />
     </task>
     <task id="LOCAL-00001" summary="ы">
       <option name="closed" value="true" />
@@ -273,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714728907360</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="короче я пыталась,  но Бд меня послало я обиделась">
+      <option name="closed" value="true" />
+      <created>1714732663830</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714732663830</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +341,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ы" />
     <MESSAGE value="регистрация  и авторизация  и магия с  маршрутами" />
-    <option name="LAST_COMMIT_MESSAGE" value="регистрация  и авторизация  и магия с  маршрутами" />
+    <MESSAGE value="короче я пыталась,  но Бд меня послало я обиделась" />
+    <option name="LAST_COMMIT_MESSAGE" value="короче я пыталась,  но Бд меня послало я обиделась" />
   </component>
 </project>
