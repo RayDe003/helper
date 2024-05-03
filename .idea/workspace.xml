@@ -4,27 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="ы">
-      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/User/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/laravel/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/helper.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="регистрация  и авторизация  и магия с  маршрутами">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/_docker/nginx/conf.d/njinx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/_docker/nginx/conf.d/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/bootstrap/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo10" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo10" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo9" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_2.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_2.ibt" afterDir="false" />
@@ -35,9 +19,7 @@
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000003" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000003" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/sessions.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/sessions.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/ib_buffer_pool" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/ibdata1" afterDir="false" />
@@ -71,7 +53,15 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="4a33f903-a783-491b-86cc-63eca523629e" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -207,7 +197,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "back",
     "last_opened_file_path": "C:/Users/locadm/PhpstormProjects/helper",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -265,7 +255,7 @@
       <workItem from="1714628895411" duration="3527000" />
       <workItem from="1714633350531" duration="13434000" />
       <workItem from="1714650130045" duration="2945000" />
-      <workItem from="1714716222629" duration="12083000" />
+      <workItem from="1714716222629" duration="15840000" />
     </task>
     <task id="LOCAL-00001" summary="ы">
       <option name="closed" value="true" />
@@ -275,14 +265,54 @@
       <option name="project" value="LOCAL" />
       <updated>1714650398959</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="регистрация  и авторизация  и магия с  маршрутами">
+      <option name="closed" value="true" />
+      <created>1714728907360</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714728907360</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/master" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="back" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ы" />
-    <option name="LAST_COMMIT_MESSAGE" value="ы" />
+    <MESSAGE value="регистрация  и авторизация  и магия с  маршрутами" />
+    <option name="LAST_COMMIT_MESSAGE" value="регистрация  и авторизация  и магия с  маршрутами" />
   </component>
 </project>
