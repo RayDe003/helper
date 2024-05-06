@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class TaskStatus extends Model
 {
     use HasFactory;
+
+    public function tasks()
+    {
+        return $this->hasMany(UserTask::class);
+    }
+
+    protected $table = 'task_status';
 }
