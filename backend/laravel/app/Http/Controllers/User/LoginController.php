@@ -10,13 +10,20 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('name', 'password');
+        $credentials = $request->only('login', 'password');
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            return response()->json(['message' => 'Аутентификация успешна', 'user' => $user], 200);
+            $token = $user->createToken('auth');
+            return response()->json(['message' => 'Аутентификация успешна', 'user' => $user, 'token' => $token->plainTextToken]);
         }
 
         return response()->json(['message' => 'Неправильные учетные данные'], 401);
+    }
+
+    public function info()
+    {
+        $user = auth()->user();
+        return $user;
     }
 }

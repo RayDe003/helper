@@ -9,3 +9,10 @@ Route::get('/test', function (\Illuminate\Http\Request $request) {
     return "Hello";
 });
 Route::post('/login', [LoginController::class, 'login']);
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/users/info', [LoginController::class, 'info']);
+});
+
+

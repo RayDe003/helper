@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('users_tasks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('task_id')->constrained('tasks');
-            $table->foreignId('task_status_id')->constrained('task_statuses');
+            $table->foreignId('task_id')->constrained('task');
+            $table->unsignedBigInteger('task_status_id');
             $table->timestamps();
         });
     }

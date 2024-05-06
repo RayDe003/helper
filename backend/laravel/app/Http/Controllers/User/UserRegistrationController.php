@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRegistrationController extends Controller
 {
-
     public function register(Request $request): JsonResponse
     {
         $user = User::create([
-            'name' => $request->name,
+            'login' => $request->login,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
