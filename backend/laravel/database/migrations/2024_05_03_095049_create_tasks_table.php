@@ -14,13 +14,12 @@ return new class extends Migration
         Schema::create('task', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->timestamp('deadline')->nullable();
-            $table->unsignedBigInteger('priority_id');
+            $table->text('description')->nullable();
+            $table->date('deadline')->nullable();
+            $table->unsignedBigInteger('priority_id')->default(1);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tasks;
 
 use App\Models\Task;
+use App\Models\UserTask;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,11 @@ class CreateTaskController extends Controller
             'description' => $request->description,
             'deadline' => $request->deadline,
             'priority_id' => $request->priority_id,
+        ]);
+
+        $userTask = UserTask::create([
+            'user_id' => auth()->user()->id,
+            'task_id' => $task->id,
         ]);
 
         return response()->json([

@@ -12,8 +12,6 @@ class Priority extends Model
         'name',
     ];
 
-    protected $primaryKey = 'priority_id';
-
     public function tasks()
     {
         return $this->hasMany(Task::class);

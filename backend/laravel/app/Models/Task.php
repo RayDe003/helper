@@ -17,7 +17,7 @@ class Task extends Model
         'priority_id',
     ];
 
-    protected $primaryKey = 'task_id';
+    protected $table = 'task';
 
     public function priority()
     {
