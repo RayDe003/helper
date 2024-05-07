@@ -14,6 +14,7 @@ class Task extends Model
         'description',
         'created_at',
         'deadline',
+        'file',
         'priority_id',
     ];
 
@@ -28,5 +29,4 @@ class Task extends Model
     {
         return $this->hasMany(UserTask::class);
     }
-
 }
