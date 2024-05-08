@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('file')->nullable();
             $table->date('deadline')->nullable();
             $table->unsignedBigInteger('priority_id')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

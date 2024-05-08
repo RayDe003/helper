@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class SubTask extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'text',
+        'task_id',
+        'sub_status'
+    ];
+
+    protected $table = 'sub_tasks';
+
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
+
+    public function sub_status()
+    {
+        return $this->belongsTo(SubTaskStatus::class);
+    }
 }

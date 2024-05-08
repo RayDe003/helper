@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class SubTaskStatus extends Model
 {
     use HasFactory;
+
+    public function subTasks()
+    {
+        return $this->hasMany(SubTask::class);
+    }
 }
