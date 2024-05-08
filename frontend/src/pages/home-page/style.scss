@@ -1,0 +1,114 @@
+.home-page {
+  width: 100%;
+  height: 100vh;
+  background: url('@/assets/images/home-page/background.jpg') no-repeat;
+  background-size: cover;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: url('@/assets/images/home-page/notebook.png') no-repeat bottom 10% right;
+    background-size: 1000px;
+    padding-top: 120px;
+    color: $main-color;
+    max-height: 823px;
+
+    @include desktop-media() {
+      padding-top: 90px;
+      background-size: 800px;
+    }
+    @include laptop-media() {
+      padding-top: 70px;
+      background-size: 700px;
+    }
+    @include tablet-media() {
+      padding-top: 60px;
+      background-size: 600px;
+    }
+  }
+  &__over-title {
+    font-weight: 900;
+    font-size: 29px;
+
+    @include desktop-media() {
+      font-size: 25px;
+    }
+    @include laptop-media() {
+      font-size: 20px;
+    }
+    @include tablet-media() {
+      font-size: 16px;
+    }
+  }
+  &__title {
+    font-weight: 900;
+    font-size: 150px;
+    margin-bottom: 44px;
+
+    @include desktop-media() {
+      font-size: 130px;
+      margin-bottom: 34px;
+    }
+    @include laptop-media() {
+      font-size: 110px;
+      margin-bottom: 24px;
+    }
+    @include tablet-media() {
+      font-size: 90px;
+      margin-bottom: 14px;
+    }
+  }
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    margin-bottom: 44px;
+    max-width: 643px;
+
+    @include desktop-media() {
+      font-size: 16px;
+      margin-bottom: 34px;
+      max-width: 593px;
+    }
+    @include laptop-media() {
+      font-size: 14px;
+      margin-bottom: 24px;
+      max-width: 543px;
+    }
+    @include tablet-media() {
+      font-size: 12px;
+      margin-bottom: 14px;
+      max-width: 493px;
+    }
+  }
+  &__button {
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 13px 60px;
+    background: none;
+    border-radius: 8px;
+    color: $main-color;
+    border: 2px solid $main-color;
+    font-weight: 400;
+    font-size: 29px;
+
+    @include desktop-media() {
+      font-size: 24px;
+      padding: 10px 50px;
+    }
+    @include laptop-media() {
+      font-size: 20px;
+      padding: 8px 40px;
+      border: 1px solid $main-color;
+      font-weight: 300;
+    }
+    @include tablet-media() {
+      font-size: 18px;
+      padding: 6px 36px;
+    }
+  }
+}

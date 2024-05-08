@@ -1,0 +1,10 @@
+.container {
+  max-width: 1700px;
+  padding-inline: 20px;
+  @include tablet-media() {
+    max-width: unset;
+    padding-inline: 35px;
+  }
+  margin-inline: auto;
+  height: 100%;
+}

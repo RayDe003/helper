@@ -1,0 +1,23 @@
+@mixin desktop-media() {
+  @media screen and (max-width: $media-desktop) {
+    @content;
+  }
+}
+
+@mixin laptop-media() {
+  @media screen and (max-width: $media-xlg) {
+    @content;
+  }
+}
+
+@mixin tablet-media() {
+  @media screen and (max-width: $media-lg) {
+    @content;
+  }
+}
+
+@mixin mobile-media() {
+  @media screen and (max-width: $media-md) {
+    @content;
+  }
+}
