@@ -5,10 +5,11 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+
 import { AuthBlock } from '@/components';
 import { AuthLayout } from '@/layouts';
 import { useAuthUser } from '@/stores';
-import { useRouter } from "vue-router";
 
 const router = useRouter();
 

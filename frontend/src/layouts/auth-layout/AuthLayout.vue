@@ -5,14 +5,15 @@
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
-import { onBeforeMount } from "vue";
-import { useAuthUser } from "@/stores";
+import { onBeforeMount } from 'vue';
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
+import { useAuthUser } from '@/stores';
+
+const router = useRouter();
 onBeforeMount(async () => {
   if (useAuthUser().token) {
-    await router.push('/plans')
+    await router.push('/plans');
   }
 });
 </script>

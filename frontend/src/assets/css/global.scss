@@ -1,6 +1,7 @@
 .container {
   max-width: 1700px;
   padding-inline: 20px;
+  color: #1e1e1e;
   @include tablet-media() {
     max-width: unset;
     padding-inline: 35px;

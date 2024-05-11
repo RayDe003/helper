@@ -15,7 +15,7 @@ export const useAuthUser = defineStore('auth-user', () => {
   const clearToken = () => {
     token.value = null;
     cookies.remove('token');
-  }
+  };
 
   return { token, setToken, clearToken };
 });

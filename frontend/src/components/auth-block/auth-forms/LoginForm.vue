@@ -31,7 +31,7 @@
 <script setup>
 import { reactive } from 'vue';
 
-import { BaseButton, BaseForm, FormField } from '@/shared/ui';
+import { BaseButton, BaseForm, FormField } from '@/shared/index.js';
 
 const submitData = reactive({
   login: '',

@@ -5,9 +5,7 @@
 </template>
 
 <script setup>
-import { MainLayout } from "@/layouts";
+import { MainLayout } from '@/layouts';
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

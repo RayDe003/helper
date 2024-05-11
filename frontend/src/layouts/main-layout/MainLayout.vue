@@ -8,12 +8,13 @@
 </template>
 
 <script setup>
-import { onBeforeMount } from "vue";
-import { useAuthUser } from "@/stores";
-import { useRouter } from "vue-router";
-import { AppHeader } from "@/components";
+import { onBeforeMount } from 'vue';
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
+import { AppHeader } from '@/components';
+import { useAuthUser } from '@/stores';
+
+const router = useRouter();
 onBeforeMount(async () => {
   if (!useAuthUser().token) {
     await router.push('/login');
@@ -28,9 +29,9 @@ onBeforeMount(async () => {
 }
 
 .main-layout {
-   width: 100%;
-   min-height: 100vh;
-   padding: 20px;
-   background: #fff;
- }
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: #fff;
+}
 </style>

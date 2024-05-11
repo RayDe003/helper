@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { FormInput } from '@/shared/ui';
+import { FormInput } from '@/shared/index.js';
 
 defineProps({
   type: {

@@ -1,7 +1,10 @@
 <template>
   <button
     class="base-button"
-    :class="{ 'base-button_w-full': fullWidth, 'base-button_transparent': bgTransparent }"
+    :class="{
+      'base-button_w-full': fullWidth,
+      'base-button_transparent': bgTransparent
+    }"
   >
     <slot />
   </button>
@@ -35,6 +38,10 @@ const props = defineProps({
   fontWeight: {
     type: Number,
     default: 400
+  },
+  borderRadius: {
+    type: String,
+    default: '8px'
   }
 });
 const fontSizeStr = computed(() => `${props.fontSize}px`);
@@ -46,13 +53,16 @@ $font-size: v-bind(fontSizeStr);
 $font-weight: v-bind(fontWeight);
 
 .base-button {
+  border-radius: v-bind(borderRadius);
   padding: v-bind(padding);
-  background: $main-color;
-  color: #fff;
-  font-size: $font-size;
+  background: $accent-purple;
   font-weight: $font-weight;
-  border-radius: 8px;
+  font-size: $font-size;
   line-height: 120%;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+
   @if ($font-family == 'base') {
     font-family: $base-font;
   } @else {

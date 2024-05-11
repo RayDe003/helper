@@ -1,7 +1,12 @@
 <template>
   <base-form @submit-form="registerUser">
     <template #labels>
-      <form-field label="Имя" placeholder="Ваше имя" type="text" v-model="submitData.name" />
+      <form-field
+        label="Имя"
+        placeholder="Ваше имя"
+        type="text"
+        v-model="submitData.name"
+      />
       <form-field
         label="Электронная почта"
         placeholder="Ваш e-mail"
@@ -42,7 +47,7 @@
 <script setup>
 import { reactive } from 'vue';
 
-import { BaseButton, BaseForm, FormField } from '@/shared/ui';
+import { BaseButton, BaseForm, FormField } from '@/shared/index.js';
 
 const submitData = reactive({
   name: '',

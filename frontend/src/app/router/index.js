@@ -27,15 +27,18 @@ const router = createRouter({
       children: [
         {
           path: 'today',
-          component: () => import('@/components/plans/plans-today/PlansToday.vue')
+          component: () =>
+            import('@/components/plans/plans-today/PlansToday.vue')
         },
         {
           path: 'weeks',
-          component: () => import('@/components/plans/plans-weeks/PlansWeeks.vue')
+          component: () =>
+            import('@/components/plans/plans-weeks/PlansWeeks.vue')
         },
         {
           path: 'calendar',
-          component: () => import('@/components/plans/plans-calendar/PlansCalendar.vue')
+          component: () =>
+            import('@/components/plans/plans-calendar/PlansCalendar.vue')
         }
       ]
     }
