@@ -4,7 +4,18 @@
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+import { onBeforeMount } from "vue";
+import { useAuthUser } from "@/stores";
+
+const router = useRouter()
+onBeforeMount(async () => {
+  if (useAuthUser().token) {
+    await router.push('/plans')
+  }
+});
+</script>
 
 <style scoped lang="scss">
 .auth-layout {

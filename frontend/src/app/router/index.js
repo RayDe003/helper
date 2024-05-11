@@ -18,6 +18,26 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('@/pages/auth-pages/login-page/LoginPage.vue')
+    },
+    {
+      path: '/plans',
+      name: 'plans',
+      component: () => import('@/pages/plans-page/PlansPage.vue'),
+      redirect: '/plans/today',
+      children: [
+        {
+          path: 'today',
+          component: () => import('@/components/plans/plans-today/PlansToday.vue')
+        },
+        {
+          path: 'weeks',
+          component: () => import('@/components/plans/plans-weeks/PlansWeeks.vue')
+        },
+        {
+          path: 'calendar',
+          component: () => import('@/components/plans/plans-calendar/PlansCalendar.vue')
+        }
+      ]
     }
   ]
 });

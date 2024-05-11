@@ -12,5 +12,10 @@ export const useAuthUser = defineStore('auth-user', () => {
     cookies.set('token', value);
   };
 
-  return { token, setToken };
+  const clearToken = () => {
+    token.value = null;
+    cookies.remove('token');
+  }
+
+  return { token, setToken, clearToken };
 });

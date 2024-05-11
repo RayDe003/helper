@@ -26,11 +26,11 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(['send-request'])
+const emit = defineEmits(['send-request']);
 
 const sendRequest = (value) => {
-  emit("send-request", value);
-}
+  emit('send-request', value);
+};
 </script>
 
 <style scoped lang="scss">
