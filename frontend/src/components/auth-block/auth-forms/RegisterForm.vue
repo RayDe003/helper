@@ -1,21 +1,24 @@
 <template>
-  <base-form>
+  <base-form @submit-form="registerUser">
     <template #labels>
-      <form-field label="Имя" placeholder="Ваше имя" type="text" />
+      <form-field label="Имя" placeholder="Ваше имя" type="text" v-model="submitData.name" />
       <form-field
         label="Электронная почта"
         placeholder="Ваш e-mail"
         type="email"
+        v-model="submitData.email"
       />
       <form-field
         label="Пароль"
         placeholder="Придумайте пароль"
         type="password"
+        v-model="submitData.password"
       />
       <form-field
         label="Пароль"
         placeholder="Повторите пароль"
         type="password"
+        v-model="submitData.password_confirmation"
       />
     </template>
     <template #buttons>
@@ -37,7 +40,21 @@
 </template>
 
 <script setup>
+import { reactive } from 'vue';
+
 import { BaseButton, BaseForm, FormField } from '@/shared/ui';
+
+const submitData = reactive({
+  name: '',
+  email: '',
+  password: '',
+  password_confirmation: ''
+});
+const emit = defineEmits(['registration-user']);
+
+const registerUser = () => {
+  emit('registration-user', submitData);
+};
 </script>
 
 <style scoped lang="scss">
