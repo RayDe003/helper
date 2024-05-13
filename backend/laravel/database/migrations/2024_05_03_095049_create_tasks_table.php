@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('file')->nullable();
-            $table->date('deadline')->nullable();
+            $table->date('deadline')->default(now());
             $table->unsignedBigInteger('priority_id')->default(1);
             $table->softDeletes();
             $table->timestamps();

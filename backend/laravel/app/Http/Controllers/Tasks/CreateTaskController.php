@@ -19,10 +19,12 @@ class CreateTaskController extends Controller
             $image = null;
         }
 
+        $deadline = $request->filled('deadline') ? $request->deadline : now();
+
         $task = Task::create([
             'title' => $request->title,
             'description' => $request->description,
-            'deadline' => $request->deadline,
+            'deadline' => $deadline,
             'priority_id' => $request->priority_id,
             'file' => $image
         ]);

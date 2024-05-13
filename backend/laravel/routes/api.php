@@ -7,6 +7,9 @@ use App\Http\Controllers\SubTasks\UpdateSubTaskController;
 use App\Http\Controllers\Tasks\AllUsersTasksController;
 use App\Http\Controllers\Tasks\CreateTaskController;
 use App\Http\Controllers\Tasks\DeleteTaskController;
+use App\Http\Controllers\Tasks\ForDayController;
+use App\Http\Controllers\Tasks\ForMonthController;
+use App\Http\Controllers\Tasks\ForTwoWeeksController;
 use App\Http\Controllers\Tasks\GetOneTaskController;
 use App\Http\Controllers\Tasks\UpdateTaskController;
 use App\Http\Controllers\User\LoginController;
@@ -28,5 +31,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/tasks/{task}/subtasks/{sub_task}', [UpdateSubTaskController::class, 'updateSubTask']);
     Route::get('/tasks/{task}/subtasks', [AllSubTasksController::class, 'getSubTasks']);
     Route::delete('/tasks/{task}/delete_sub_task/{sub_task}', [DeleteSubTaskController::class, "deleteSubTask"]);
+    Route::get('/tasks/for_two_weeks', [ForTwoWeeksController::class, "getTwoWeeks"]);
+    Route::get('/tasks/by_date', [ForDayController::class, "getByDate"]);
+    Route::get('/tasks/by_month', [ForMonthController::class, "getByMonth"]);
 });
 
