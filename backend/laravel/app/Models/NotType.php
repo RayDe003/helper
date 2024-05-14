@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class NotType extends Model
 {
     use HasFactory;
+
+    public function task_not()
+    {
+        return $this->hasMany(Notifications::class);
+    }
 }

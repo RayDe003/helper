@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Notifications\AddNotificationsController;
 use App\Http\Controllers\SubTasks\AllSubTasksController;
 use App\Http\Controllers\SubTasks\CreateSubTaskController;
 use App\Http\Controllers\SubTasks\DeleteSubTaskController;
@@ -34,5 +35,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/tasks/for_two_weeks', [ForTwoWeeksController::class, "getTwoWeeks"]);
     Route::get('/tasks/by_date', [ForDayController::class, "getByDate"]);
     Route::get('/tasks/by_month', [ForMonthController::class, "getByMonth"]);
+    Route::post('/tasks/{task}/notification', [AddNotificationsController::class, 'setNotifications']);
 });
 
