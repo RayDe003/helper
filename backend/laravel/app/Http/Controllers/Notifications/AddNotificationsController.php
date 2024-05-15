@@ -18,6 +18,7 @@ class AddNotificationsController extends Controller
         $notification = Notifications::create([
             'not_type_id' => $request->input('not_type_id'),
             'task_id' => $task->id,
+            'notification_days' => json_encode($request->input('notification_days')),
         ]);
 
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('not_type_id');
             $table->unsignedBigInteger('task_id');
+            $table->json('notification_days')->nullable();
             $table->timestamps();
         });
     }

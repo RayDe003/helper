@@ -11,7 +11,8 @@ class Notifications extends Model
 
     protected $fillable = [
         'not_type_id',
-        'task_id'
+        'task_id',
+        'notification_days'
     ];
 
     protected $table = 'notifications';

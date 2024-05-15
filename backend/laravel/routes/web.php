@@ -3,5 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return "Hello";
+    return "Опять что-то не так  лох";
 });
