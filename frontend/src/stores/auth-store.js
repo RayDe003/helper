@@ -6,6 +6,7 @@ export const { cookies } = useCookies();
 
 export const useAuthUser = defineStore('auth-user', () => {
   const token = ref(cookies.get('token'));
+  const userData = ref(null);
 
   const setToken = (value) => {
     token.value = value;
@@ -17,5 +18,5 @@ export const useAuthUser = defineStore('auth-user', () => {
     cookies.remove('token');
   };
 
-  return { token, setToken, clearToken };
+  return { token, userData, setToken, clearToken };
 });

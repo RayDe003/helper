@@ -3,6 +3,7 @@
     class="form-input"
     :type="type"
     :value="modelValue"
+    :checked="modelValue"
     :placeholder="placeholder"
     @input="updateValue"
   />

@@ -5,8 +5,8 @@
     </router-link>
     <div class="auth-block__inner">
       <auth-switcher :page="page" />
-      <login-form v-if="page === 'login'" @login-user="sendRequest" />
-      <register-form v-else @registration-user="sendRequest" />
+      <login-form v-if="page === 'login'" />
+      <register-form v-else />
     </div>
   </section>
 </template>
@@ -25,12 +25,6 @@ const props = defineProps({
     validator: (value) => ['login', 'register'].includes(value)
   }
 });
-
-const emit = defineEmits(['send-request']);
-
-const sendRequest = (value) => {
-  emit('send-request', value);
-};
 </script>
 
 <style scoped lang="scss">

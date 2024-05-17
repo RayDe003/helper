@@ -5,8 +5,8 @@
         <p class="home-page__over-title">Организуй свою жизнь с</p>
         <h1 class="home-page__title">Helper</h1>
         <p class="home-page__description">
-          Сайт Helper предоставляет удобный инструмент для планирования
-          задач и управления временем, помогая организовать повседневные дела и
+          Сайт Helper предоставляет удобный инструмент для планирования задач и
+          управления временем, помогая организовать повседневные дела и
           достигать поставленных целей. Создавайте списки дел, отслеживайте
           прогресс и повышайте эффективность своей работы благодаря интуитивному
           интерфейсу и персонализированным функциям.
@@ -20,12 +20,15 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const toLoginPage = () => {
   router.push('/login');
 };
+
+onMounted(() => {});
 </script>
 
 <style scoped lang="scss">

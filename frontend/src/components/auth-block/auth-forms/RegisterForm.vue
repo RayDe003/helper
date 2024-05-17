@@ -1,29 +1,33 @@
 <template>
-  <base-form @submit-form="registerUser">
+  <base-form @submit-form="sendRequest">
     <template #labels>
       <form-field
         label="Имя"
         placeholder="Ваше имя"
         type="text"
-        v-model="submitData.name"
+        v-model="submitData.login"
+        @update:model-value="error = null"
       />
       <form-field
         label="Электронная почта"
         placeholder="Ваш e-mail"
         type="email"
         v-model="submitData.email"
+        @update:model-value="error = null"
       />
       <form-field
         label="Пароль"
         placeholder="Придумайте пароль"
         type="password"
         v-model="submitData.password"
+        @update:model-value="error = null"
       />
       <form-field
         label="Пароль"
         placeholder="Повторите пароль"
         type="password"
         v-model="submitData.password_confirmation"
+        @update:model-value="error = null"
       />
     </template>
     <template #buttons>
@@ -33,32 +37,47 @@
         :font-weight="600"
         font-family="second"
         padding="16px 0"
+        @click="error = null"
       >
         Зарегистрироваться
       </base-button>
       <p class="form__description">
         Нажимая на кнопку “Зарегистрироваться” вы даёте согласие на
-        <a href="#" class="underline"> обработку персональных данных </a>
+        <a href="#" class="form__description-underline">
+          обработку персональных данных
+        </a>
       </p>
+      <p v-if="error" class="error-message">{{ error }}</p>
     </template>
   </base-form>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-import { BaseButton, BaseForm, FormField } from '@/shared/index.js';
+import { registerUser } from '@/api';
+import { BaseButton, BaseForm, FormField } from '@/shared';
 
 const submitData = reactive({
-  name: '',
+  login: '',
   email: '',
   password: '',
   password_confirmation: ''
 });
-const emit = defineEmits(['registration-user']);
 
-const registerUser = () => {
-  emit('registration-user', submitData);
+const router = useRouter();
+const error = ref(null);
+
+const sendRequest = async () => {
+  try {
+    const { errorMessage } = await registerUser(submitData);
+    error.value = errorMessage;
+  } finally {
+    if (!error.value) {
+      await router.push({ name: 'plans' });
+    }
+  }
 };
 </script>
 
@@ -69,5 +88,14 @@ const registerUser = () => {
   text-align: center;
   line-height: 150%;
   color: $main-color;
+  &-underline {
+    text-decoration: underline;
+  }
+}
+.error-message {
+  color: red;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
 }
 </style>

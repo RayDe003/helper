@@ -1,25 +1,12 @@
 <template>
   <auth-layout>
-    <auth-block page="register" @send-request="registerUser" />
+    <auth-block page="register" />
   </auth-layout>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-
 import { AuthBlock } from '@/components';
 import { AuthLayout } from '@/layouts';
-import { useAuthUser } from '@/stores';
-
-const router = useRouter();
-
-const registerUser = async (value) => {
-  // await axios.post('/', value)
-  console.log(value);
-  useAuthUser().setToken('tipatoken');
-
-  await router.push({ name: 'plans' });
-};
 </script>
 
 <style scoped lang="scss"></style>

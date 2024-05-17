@@ -7,8 +7,20 @@
       :ref="menu"
       v-on-click-outside="isShowedMenu ? showMenu : null"
     >
-      <li class="toast-menu__item" v-if="mode === 'diary'">Настроить</li>
-      <li class="toast-menu__item" v-else>Перерандомить задачу</li>
+      <li
+        class="toast-menu__item"
+        v-if="mode === 'diary'"
+        @click="emit('configure-task')"
+      >
+        Настроить
+      </li>
+      <li
+        class="toast-menu__item"
+        v-else-if="mode === 'procrastination'"
+        @click="emit('randomize-task')"
+      >
+        Перерандомить задачу
+      </li>
       <li class="toast-menu__item" @click="emit('delete-task')">Удалить</li>
     </menu>
   </div>
@@ -23,12 +35,12 @@ import { EllipsesIcon } from '@/shared';
 defineProps({
   mode: {
     type: String,
-    default: 'diary',
+    default: null,
     validator: (value) => ['diary', 'procrastination'].includes(value)
   }
 });
 
-const emit = defineEmits(['delete-task']);
+const emit = defineEmits(['delete-task', 'configure-task', 'randomize-task']);
 const isShowedMenu = ref(false);
 
 const menu = ref();

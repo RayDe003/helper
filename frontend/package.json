@@ -11,12 +11,15 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^8.6.0",
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
+    "@vueuse/router": "^10.9.0",
     "axios": "^1.6.8",
+    "date-fns": "^3.6.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
+    "vue-router": "^4.3.2",
     "vue3-cookies": "^1.0.6"
   },
   "devDependencies": {

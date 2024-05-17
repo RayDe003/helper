@@ -2,32 +2,67 @@
   <section class="today">
     <base-select
       class="base-select"
-      :init-mode="initMode"
+      :init-mode="+initMode"
       @switch-mode="switchMode"
     />
-    <task-list :tasks="tasks" @delete-task="deleteTask"></task-list>
+    <task-list
+      :mode="initMode ? 'procrastination' : 'diary'"
+      :tasks="tasks"
+      @delete-task="deleteTask"
+      @complete-task="completeTask"
+    ></task-list>
   </section>
-  <purple-button class="create-button" v-if="initMode === 0">
+  <purple-button class="create-button" v-if="+initMode === 0">
     Создать задачу
   </purple-button>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { useRouteQuery } from '@vueuse/router';
+import { computed } from 'vue';
 
 import { TaskList } from '@/components';
-import { tasks } from '@/components/task/model/tasks.js';
+import {
+  tasksDiary,
+  tasksProcrastination
+} from '@/components/task/model/tasks.js';
 import { BaseSelect, PurpleButton } from '@/shared';
 
-const initMode = ref(0);
-
+const initMode = useRouteQuery('mode', 0, { transform: Number });
 const switchMode = (value) => (initMode.value = value);
 
-const deleteTask = (id) =>
-  tasks.value.splice(
-    tasks.value.findIndex((item) => item.id === id),
-    1
-  );
+const tasks = computed(() =>
+  initMode.value ? tasksProcrastination.value : tasksDiary.value
+);
+
+const deleteTask = (id) => {
+  initMode.value
+    ? tasksProcrastination.value.splice(
+        tasksProcrastination.value.findIndex((item) => item.id === id),
+        1
+      )
+    : tasksDiary.value.splice(
+        tasksDiary.value.findIndex((item) => item.id === id),
+        1
+      );
+};
+const completeTask = (id) => {
+  initMode.value
+    ? tasksProcrastination.value.map((task) => {
+        if (task.id === id) task.completed = true;
+        return task;
+      })
+    : tasksDiary.value.map((task) => {
+        if (task.id === id) task.completed = true;
+        return task;
+      });
+};
+
+// const deleteTask = (id) =>
+//   tasksDiary.value.splice(
+//     tasksDiary.value.findIndex((item) => item.id === id),
+//     1
+//   );
 </script>
 
 <style scoped lang="scss">

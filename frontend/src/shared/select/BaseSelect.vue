@@ -5,7 +5,7 @@
       <span @click="showSelect">
         {{ mods[selectedModIndex] }}
       </span>
-      <triangle-icon :class="{ icon_rotate: isShowedSelect }" />
+      <corner-icon :class="{ icon_rotate: isShowedSelect }" />
       <div
         class="select__block"
         v-if="isShowedSelect"
@@ -20,7 +20,7 @@
 <script setup>
 import { ref } from 'vue';
 
-import { TriangleIcon } from '@/shared';
+import { CornerIcon } from '@/shared';
 
 const props = defineProps({
   initMode: { type: Number, default: 0 }
@@ -69,8 +69,8 @@ const switchMode = (value) => {
 }
 .icon {
   &_rotate {
-    transform: rotate(180deg);
     transition: all 0.2s;
+    transform: rotate(180deg);
   }
 }
 </style>

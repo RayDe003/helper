@@ -27,5 +27,10 @@ const submitForm = () => {
     flex-direction: column;
     gap: 20px;
   }
+  &-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 </style>
