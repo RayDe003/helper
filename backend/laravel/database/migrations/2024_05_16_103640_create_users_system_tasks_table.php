@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('users_system_tasks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('system_task_id');
+            $table->string('title');
             $table->unsignedBigInteger('accept_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('random_tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('task_id')->constrained('task');
+            $table->foreignId('system_task_id')->constrained('users_system_tasks');
             $table->unsignedBigInteger('task_status_id')->default(1);
             $table->timestamps();
         });
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tandom_tasks');
+        Schema::dropIfExists('random_tasks');
     }
 };

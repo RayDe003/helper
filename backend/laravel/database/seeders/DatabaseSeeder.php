@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
            PrioritySeeder::class,
            TaskStatusSeeder::class,
            SubTaskStatus::class,
-           NotTypeSeeder::class
+           NotTypeSeeder::class,
+           SystemTasksSeeder::class,
+           AcceptSeeders::class
        ]);
     }
 }
