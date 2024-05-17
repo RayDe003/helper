@@ -31,20 +31,20 @@ export const registerUser = async (data) => {
   return { errorMessage };
 };
 
-export const getUserData = async () => {
-  const pending = ref(true);
-  const error = ref(null);
-  try {
-    await axios
-      .get(apiLink('users/info'), {
-        headers: {
-          Accept: `Bearer ${token}`
-        }
-      })
-      .then((response) => console.log(response))
-      .catch((err) => (error.value = err));
-  } finally {
-    pending.value = false;
-  }
-  return { pending, error };
-};
+// export const getUserData = async () => {
+//   const pending = ref(true);
+//   const error = ref(null);
+//   try {
+//     await axios
+//       .get(apiLink('users/info'), {
+//         headers: {
+//           Accept: `Bearer ${token}`
+//         }
+//       })
+//       .then((response) => console.log(response))
+//       .catch((err) => (error.value = err));
+//   } finally {
+//     pending.value = false;
+//   }
+//   return { pending, error };
+// };
