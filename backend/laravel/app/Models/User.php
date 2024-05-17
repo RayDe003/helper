@@ -51,9 +51,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserTask::class);
     }
-
-    public function notify($instance)
-    {
-        $this->notify(new TaskReminderNotification($instance));
-    }
 }

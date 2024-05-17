@@ -4,22 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="пыталась тыкать уведомления,  запуталась нах, ушла  домой плакать">
-      <change afterPath="$PROJECT_DIR$/backend/laravel/resources/views/test-email.blade.php" afterDir="false" />
+    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="ебатся с уведомлениями весело мне нравиться">
+      <change afterPath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_16_103840_add_foreign_key_in_random_tasks_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/_docker/app/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/_docker/app/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendDailyNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendDailyNotifications.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendWeeklyNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendWeeklyNotifications.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Notifications/AddNotificationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Notifications/AddNotificationsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/Notifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Models/Notifications.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/ForMonthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/ForMonthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Notifications/DailyNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Notifications/TaskReminderNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_13_080452_create_notifications_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_13_080452_create_notifications_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Notifications/TaskReminderNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Notifications/TaskReminderNotification.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo21" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo22" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo23" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo23" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo24_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo23" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo24" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo25_tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_2.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_2.ibt" afterDir="false" />
@@ -30,7 +28,7 @@
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000019" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000019" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000020" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000020" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/cache.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/cache.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/cache_locks.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/cache_locks.ibd" afterDir="false" />
@@ -284,7 +282,7 @@
       <workItem from="1714716222629" duration="12083000" />
       <workItem from="1714966245144" duration="48084000" />
       <workItem from="1715169346438" duration="41000" />
-      <workItem from="1715571674425" duration="44440000" />
+      <workItem from="1715571674425" duration="65239000" />
     </task>
     <task id="LOCAL-00001" summary="ы">
       <option name="closed" value="true" />
@@ -350,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715671862859</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="ебатся с уведомлениями весело мне нравиться">
+      <option name="closed" value="true" />
+      <created>1715768954377</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715768954377</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,6 +382,7 @@
     <MESSAGE value="фулл подзадачи и удаление  задачи" />
     <MESSAGE value="ура задачи вывод по  дням и  тд" />
     <MESSAGE value="пыталась тыкать уведомления,  запуталась нах, ушла  домой плакать" />
-    <option name="LAST_COMMIT_MESSAGE" value="пыталась тыкать уведомления,  запуталась нах, ушла  домой плакать" />
+    <MESSAGE value="ебатся с уведомлениями весело мне нравиться" />
+    <option name="LAST_COMMIT_MESSAGE" value="ебатся с уведомлениями весело мне нравиться" />
   </component>
 </project>

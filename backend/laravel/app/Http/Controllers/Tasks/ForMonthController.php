@@ -8,29 +8,43 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ForMonthController extends Controller
 {
-    public function getByMonth(Request $request) : JsonResponse
+    public function getByMonth(Request $request): JsonResponse
     {
         $month = $request->input('month', Carbon::now()->month);
         $year = $request->input('year', Carbon::now()->year);
 
-        $tasks = Task::whereYear('deadline', $year)
+        $userId = Auth::id();
+
+        $daysWithTasks = Task::whereHas('users', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })
+            ->whereYear('deadline', $year)
             ->whereMonth('deadline', $month)
-            ->with('subTasks')
             ->orderBy('deadline')
-            ->get()
-            ->map(function ($task) {
-                $task->date = Carbon::parse($task->deadline)->toDateString();
-                return $task;
-            });
+            ->pluck('deadline')
+            ->map(function ($date) {
+                return Carbon::parse($date)->toDateString();
+            })
+            ->unique()
+            ->values()
+            ->toArray();
 
+        // Создаем массив дней месяца с пометкой о наличии или отсутствии задач
+        $startOfMonth = Carbon::create($year, $month, 1);
+        $endOfMonth = $startOfMonth->copy()->endOfMonth();
+        $allDaysOfMonth = [];
+        for ($date = $startOfMonth->copy(); $date->lte($endOfMonth); $date->addDay()) {
+            $allDaysOfMonth[] = [
+                'date' => $date->toDateString(),
+                'has_tasks' => in_array($date->toDateString(), $daysWithTasks),
+            ];
+        }
 
-        return response()->json([
-            'tasks' => $tasks,
-        ]);
-
+        return response()->json(['days' => $allDaysOfMonth]);
     }
 
 }

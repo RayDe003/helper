@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Task;
 use App\Notifications\TaskReminderNotification;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class SendDailyNotifications extends Command
 {
@@ -35,7 +36,8 @@ class SendDailyNotifications extends Command
         foreach ($tasksWithDailyNotifications as $task) {
             foreach ($task->notifications as $notification) {
                 if ($task->deadline >= Carbon::today()) {
-                    $user = $task->users()->where('user_id', $notification->user_id)->first();
+                    $user = $task->users()->first()->user()->first();
+                    if ($task instanceof Task) Log::info('ebanat? nahuya ti chitaesh eto??? gay ebaniy');
                     $user->notify(new TaskReminderNotification($task));
                 }
             }

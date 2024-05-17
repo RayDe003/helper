@@ -14,7 +14,7 @@ class SendWeeklyNotifications extends Command
      *
      * @var string
      */
-    protected $signature = 'app:send-weekly';
+    protected $signature = 'notifications:send-weekly';
 
     /**
      * The console command description.
@@ -36,7 +36,7 @@ class SendWeeklyNotifications extends Command
             foreach ($tasksWithWeeklyNotifications as $task) {
                 foreach ($task->notifications as $notification) {
                     if ($task->deadline > $currentDate) {
-                        $user = $task->users()->where('user_id', $notification->user_id)->first();
+                        $user = $task->users()->first()->user()->first();
                         $user->notify(new TaskReminderNotification($task));
                     }
                 }
