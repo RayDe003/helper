@@ -8,7 +8,7 @@ import BaseSelect from './select/BaseSelect.vue';
 import DropSelect from './select/DropSelect.vue';
 import ToastMenu from './toast-menu/ToastMenu.vue';
 
-export * from './icons/index.js';
+export * from './icons';
 export {
   BaseButton,
   BaseCheckbox,

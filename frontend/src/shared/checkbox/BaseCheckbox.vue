@@ -10,6 +10,7 @@
         :name="name"
         hidden
         v-model="isChecked"
+        :value="value"
         :disabled="type === 'checkbox' && isChecked"
         ref="checkbox"
       />

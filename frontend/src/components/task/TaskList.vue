@@ -5,10 +5,16 @@
       :key="task.id"
       :id="task.id"
       :name="task.name"
+      :description="task.description"
       :completed="task.completed"
+      :children="task.children"
+      :priority="task.priority"
+      :deadline="task.deadline"
       :mode="mode"
       @delete-task="emit('delete-task', task.id)"
       @complete-task="emit('complete-task', task.id)"
+      @change-task="changeTask"
+      @complete-subtask="completeSubtask"
     />
   </section>
 </template>
@@ -24,7 +30,14 @@ defineProps({
     validator: (value) => ['diary', 'procrastination'].includes(value)
   }
 });
-const emit = defineEmits(['delete-task', 'complete-task']);
+const emit = defineEmits([
+  'delete-task',
+  'complete-task',
+  'change-task',
+  'complete-subtask'
+]);
+const changeTask = (data) => emit('change-task', data);
+const completeSubtask = (data) => emit('complete-subtask', data);
 </script>
 
 <style scoped lang="scss">

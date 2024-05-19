@@ -55,11 +55,13 @@ const logout = () => {
   display: flex;
   justify-content: space-between;
   position: sticky;
-  top: 0;
+  top: 20px;
   width: 100%;
   padding: 18px;
   border: 2px solid #1e1e1e;
+  background: #fff;
   border-radius: 10px;
+  z-index: 20;
 }
 
 .links {

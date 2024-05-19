@@ -5,7 +5,10 @@
       <span @click="showSelect">
         {{ mods[selectedModIndex] }}
       </span>
-      <corner-icon :class="{ icon_rotate: isShowedSelect }" />
+      <corner-icon
+        :class="{ icon_rotate: isShowedSelect }"
+        @click="showSelect"
+      />
       <div
         class="select__block"
         v-if="isShowedSelect"
@@ -58,6 +61,7 @@ const switchMode = (value) => {
   }
   &__block {
     background: #fff;
+    z-index: 5;
     border: 2px solid $accent-black;
     padding: 10px;
     line-height: 1;
@@ -68,6 +72,8 @@ const switchMode = (value) => {
   }
 }
 .icon {
+  display: block;
+
   &_rotate {
     transition: all 0.2s;
     transform: rotate(180deg);

@@ -1,4 +1,7 @@
+import PlanSubtask from './PlanSubtask.vue';
 import PlanTask from './PlanTask.vue';
+import SubtaskList from './SubtaskList.vue';
 import TaskList from './TaskList.vue';
+import TaskSettings from './TaskSettings.vue';
 
-export { PlanTask, TaskList };
+export { PlanSubtask, PlanTask, SubtaskList, TaskList, TaskSettings };

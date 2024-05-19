@@ -10,7 +10,7 @@
       <li
         class="toast-menu__item"
         v-if="mode === 'diary'"
-        @click="emit('configure-task')"
+        @click="showSettings"
       >
         Настроить
       </li>
@@ -40,12 +40,19 @@ defineProps({
   }
 });
 
-const emit = defineEmits(['delete-task', 'configure-task', 'randomize-task']);
+const emit = defineEmits(['delete-task', 'randomize-task']);
+const settingsMode = defineModel({ default: false });
+
+const showMenu = () => (isShowedMenu.value = !isShowedMenu.value);
+
+const showSettings = () => {
+  settingsMode.value = !settingsMode.value;
+  showMenu();
+};
 const isShowedMenu = ref(false);
 
 const menu = ref();
 
-const showMenu = () => (isShowedMenu.value = !isShowedMenu.value);
 </script>
 
 <style scoped lang="scss">
