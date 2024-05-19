@@ -51,19 +51,19 @@
         <input
           v-for="(child, ind) in children"
           :key="child.task_id"
-          type="text"
-          class="settings-input"
-          @change="inputData('children', ind)"
           v-model="child.name"
+          class="settings-input"
+          type="text"
+          @change="inputData('children', ind)"
           @keyup.enter="submitSettings('children', ind)"
         />
       </section>
     </div>
     <drop-select
+      v-model="settingsData.priority"
+      :parameters="priorityParameters"
       name="priority"
       title="Приоритет"
-      :parameters="priorityParameters"
-      v-model="settingsData.priority"
     />
     <button class="settings-button" @click="submitSettings">Подтвердить</button>
   </section>
@@ -80,7 +80,7 @@ const props = defineProps({
   name: { type: String, default: 'Новая задача' },
   description: { type: String, default: 'Описание' },
   deadline: {
-    type: Date,
+    type: [Date, String],
     default: null
   },
   children: {
@@ -207,6 +207,7 @@ const clickDatePicker = () => datePicker.value.showPicker();
   &-date {
     display: flex;
     align-items: center;
+    cursor: pointer;
     gap: 10px;
 
     &__show {

@@ -17,7 +17,7 @@
       <li
         class="toast-menu__item"
         v-else-if="mode === 'procrastination'"
-        @click="emit('randomize-task')"
+        @click="randomizeTask"
       >
         Перерандомить задачу
       </li>
@@ -41,6 +41,7 @@ defineProps({
 });
 
 const emit = defineEmits(['delete-task', 'randomize-task']);
+// eslint-disable-next-line vue/require-prop-types
 const settingsMode = defineModel({ default: false });
 
 const showMenu = () => (isShowedMenu.value = !isShowedMenu.value);
@@ -49,10 +50,15 @@ const showSettings = () => {
   settingsMode.value = !settingsMode.value;
   showMenu();
 };
+
+const randomizeTask = () => {
+  emit('randomize-task');
+  showMenu();
+};
+
 const isShowedMenu = ref(false);
 
 const menu = ref();
-
 </script>
 
 <style scoped lang="scss">
@@ -69,7 +75,8 @@ const menu = ref();
     display: flex;
     flex-direction: column;
     gap: 4px;
-    width: 250px;
+    width: fit-content;
+    min-width: 200px;
     padding-block: 17px;
     list-style: none;
     right: -10px;

@@ -7,7 +7,7 @@
       :completed="subTask.completed"
       @complete-subtask="emit('complete-subtask', subTask.task_id)"
     >
-      {{ subTask.name }}
+      {{ mode ? subTask.name : trimText(subTask.name, 11) }}
     </plan-subtask>
   </section>
 </template>
@@ -15,7 +15,10 @@
 <script setup>
 import { PlanSubtask } from '@/components';
 
+import { trimText } from './model/functions.js';
+
 defineProps({
+  mode: { type: String, default: null },
   subTasks: { type: Array, default: () => [] }
 });
 

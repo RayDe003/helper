@@ -17,6 +17,7 @@
       <check-icon v-if="type === 'checkbox' ? isChecked : checked" />
     </div>
     <span
+      class="checkbox__text"
       :class="{ 'checkbox_checked-text': type === 'checkbox' && isChecked }"
     >
       <slot />
@@ -50,6 +51,10 @@ const props = defineProps({
   checked: {
     type: Boolean,
     default: false
+  },
+  reverse: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -68,6 +73,12 @@ const switchCheck = () => checkbox.value.click();
   align-items: center;
   justify-content: center;
   border-radius: 4px;
+
+  &__text {
+    text-overflow: ellipsis;
+    text-wrap: none;
+    overflow: hidden;
+  }
   &-area {
     display: flex;
     cursor: pointer;

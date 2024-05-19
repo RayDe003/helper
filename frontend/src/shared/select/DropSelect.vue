@@ -32,7 +32,7 @@ defineProps({
   parameters: { type: Array, required: true }
 });
 
-const isShowedSelect = ref(false);
+const isShowedSelect = ref(true);
 // eslint-disable-next-line vue/require-prop-types
 const modelValue = defineModel();
 const showSelect = () => (isShowedSelect.value = !isShowedSelect.value);

@@ -1,17 +1,30 @@
 <template>
-  <section class="today">
+  <section class="day">
     <base-select
       class="base-select"
       :init-mode="+initMode"
       @switch-mode="switchMode"
+      v-if="route.name === 'plans.today'"
+    />
+    <local-time
+      :date="`${paramsDate.year}/${paramsDate.month}/${paramsDate.day}`"
+      class="local-time"
+      v-else-if="paramsDate"
+    />
+    <tasks-refresher
+      v-if="+initMode"
+      :tasks-length="tasks.length"
+      @click="refreshKey++"
     />
     <task-list
+      :key="refreshKey"
       :mode="initMode ? 'procrastination' : 'diary'"
       :tasks="tasks"
       @delete-task="deleteTask"
       @complete-task="completeTask"
       @change-task="changeTask"
       @complete-subtask="completeSubtask"
+      @randomize-task="randomizeTask"
     />
     <plan-task
       v-if="newTask"
@@ -31,6 +44,7 @@
   </section>
   <purple-button
     class="create-button"
+    icon="cross"
     @click="createTask"
     v-if="+initMode === 0 && !newTask"
   >
@@ -41,22 +55,34 @@
 <script setup>
 import { useRouteQuery } from '@vueuse/router';
 import { computed, reactive, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
-import { TaskList } from '@/components';
-import { PlanTask } from '@/components/index.js';
+import { PlanTask, TaskList, TasksRefresher } from '@/components';
 import {
   tasksDiary,
   tasksProcrastination
 } from '@/components/task/model/tasks.js';
 import { BaseSelect, PurpleButton } from '@/shared';
+import { LocalTime } from '@/shared/index.js';
 
 const initMode = useRouteQuery('mode', 0, { transform: Number });
-const switchMode = (value) => (initMode.value = value);
+const newTask = ref(false);
 
+const route = useRoute();
+const paramsDate = computed(() => {
+  const day = route.params?.day;
+  const month = route.params?.month;
+  const year = route.params?.year;
+
+  return { day, month, year };
+});
+
+const refreshKey = ref(1);
 const tasks = computed(() =>
   initMode.value ? tasksProcrastination.value : tasksDiary.value
 );
-const newTask = ref(false);
+
+const switchMode = (value) => (initMode.value = value);
 
 const deleteTask = (id) => {
   initMode.value
@@ -106,6 +132,11 @@ const changeTask = (data) => {
     }
   });
 };
+const randomizeTask = (id) => {
+  console.log(id);
+  // todo: refresh tasks
+};
+
 const createdTaskId = ref(1);
 const createdTaskData = reactive({
   name: 'Новая задача',
@@ -121,12 +152,15 @@ const createTask = () => {
 </script>
 
 <style scoped lang="scss">
-.today {
+.day {
   padding: 24px 24px 50px;
   width: 100%;
   height: 100%;
 }
-
+.local-time {
+  display: block;
+  margin-bottom: 25px;
+}
 .base-select {
   margin-bottom: 25px;
 }

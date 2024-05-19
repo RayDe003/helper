@@ -8,7 +8,7 @@
           :value="completed"
           v-model="isChecked"
         >
-          {{ name }}
+          {{ mode ? name : trimText(name, 10) }}
         </base-checkbox>
         <corner-icon
           class="task-checkbox__icon"
@@ -18,6 +18,7 @@
         />
       </p>
       <subtask-list
+        :mode="mode"
         :sub-tasks="children"
         class="task-sub"
         v-if="showedSubtasks"
@@ -39,6 +40,7 @@
       :mode="mode"
       v-model="settingMode"
       @delete-task="emit('delete-task')"
+      @randomize-task="emit('randomize-task')"
     />
   </article>
 </template>
@@ -50,10 +52,12 @@ import { SubtaskList, TaskSettings } from '@/components';
 import { BaseCheckbox, ToastMenu } from '@/shared';
 import { CornerIcon } from '@/shared/index.js';
 
+import { trimText } from './model/functions.js';
+
 const props = defineProps({
   mode: {
     type: String,
-    default: 'diary',
+    default: null,
     validator: (value) => ['diary', 'procrastination'].includes(value)
   },
   id: {
@@ -77,7 +81,7 @@ const props = defineProps({
     default: null
   },
   deadline: {
-    type: Date,
+    type: [Date, String],
     default: null
   },
   completed: {
@@ -98,7 +102,8 @@ const emit = defineEmits([
   'complete-task',
   'change-task',
   'create-task',
-  'complete-subtask'
+  'complete-subtask',
+  'randomize-task'
 ]);
 
 const isChecked = ref(props.completed);

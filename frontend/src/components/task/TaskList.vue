@@ -15,6 +15,7 @@
       @complete-task="emit('complete-task', task.id)"
       @change-task="changeTask"
       @complete-subtask="completeSubtask"
+      @randomize-task="emit('randomize-task', task.id)"
     />
   </section>
 </template>
@@ -26,7 +27,7 @@ defineProps({
   tasks: { type: Array, default: () => [] },
   mode: {
     type: String,
-    default: 'diary',
+    default: null,
     validator: (value) => ['diary', 'procrastination'].includes(value)
   }
 });
@@ -34,7 +35,8 @@ const emit = defineEmits([
   'delete-task',
   'complete-task',
   'change-task',
-  'complete-subtask'
+  'complete-subtask',
+  'randomize-task'
 ]);
 const changeTask = (data) => emit('change-task', data);
 const completeSubtask = (data) => emit('complete-subtask', data);

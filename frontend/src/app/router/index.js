@@ -1,3 +1,4 @@
+import { isToday } from 'date-fns';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -26,16 +27,23 @@ const router = createRouter({
       redirect: '/plans/today',
       children: [
         {
+          name: 'plans.today',
           path: 'today',
-          component: () =>
-            import('@/components/plans/plans-today/PlansToday.vue')
+          component: () => import('@/components/plans/plans-day/PlansDay.vue')
         },
         {
+          name: 'plans.day',
+          path: ':year/:month/:day',
+          component: () => import('@/components/plans/plans-day/PlansDay.vue')
+        },
+        {
+          name: 'plans.weeks',
           path: 'weeks',
           component: () =>
             import('@/components/plans/plans-weeks/PlansWeeks.vue')
         },
         {
+          name: 'plans.calendar',
           path: 'calendar',
           component: () =>
             import('@/components/plans/plans-calendar/PlansCalendar.vue')
@@ -43,6 +51,16 @@ const router = createRouter({
       ]
     }
   ]
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'plans.day') {
+    const { year, month, day } = to.params;
+
+    if (isToday(`${year}-${month}-${day}`)) {
+      next({ name: 'plans.today' });
+    } else next();
+  } else next();
 });
 
 export default router;

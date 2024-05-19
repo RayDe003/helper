@@ -60,6 +60,7 @@ $font-weight: v-bind(fontWeight);
   font-size: $font-size;
   line-height: 120%;
   color: #fff;
+  width: fit-content;
   cursor: pointer;
   border: none;
 
