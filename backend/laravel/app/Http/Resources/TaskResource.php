@@ -22,7 +22,7 @@ class TaskResource extends JsonResource
             'deadline' => $this->deadline,
             'priority_id' => $this->priority_id,
             'is_complete' => $this->userTask->is_complete,
-            'subTasks' => SubTaskResource::collection($this->whenLoaded('subTasks')),
+            'sub_tasks' => SubTaskResource::collection($this->whenLoaded('subTasks')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

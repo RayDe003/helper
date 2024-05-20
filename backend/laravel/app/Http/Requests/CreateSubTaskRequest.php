@@ -25,7 +25,6 @@ class CreateSubTaskRequest extends FormRequest
     {
         return [
             'text' => 'required|max:255',
-            'task_id' => 'required'
         ];
     }
 }

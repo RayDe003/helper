@@ -6,6 +6,9 @@ use App\Http\Controllers\SubTasks\CompleteSubTask;
 use App\Http\Controllers\SubTasks\CreateSubTaskController;
 use App\Http\Controllers\SubTasks\DeleteSubTaskController;
 use App\Http\Controllers\SubTasks\UpdateSubTaskController;
+use App\Http\Controllers\SystemTasks\AcceptSystemTask;
+use App\Http\Controllers\SystemTasks\AllSystemTasks;
+use App\Http\Controllers\SystemTasks\GetTenTasks;
 use App\Http\Controllers\Tasks\AllUsersTasksController;
 use App\Http\Controllers\Tasks\CompleteTaskController;
 use App\Http\Controllers\Tasks\CreateTaskController;
@@ -44,5 +47,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/tasks/{task}/subtasks/{sub_task}', [UpdateSubTaskController::class, 'updateSubTask']);
     Route::get('/tasks/{task}/subtasks', [AllSubTasksController::class, 'getSubTasks']);
     Route::delete('/tasks/{task}/delete_sub_task/{sub_task}', [DeleteSubTaskController::class, "deleteSubTask"]);
+
+    Route::get('/system_tasks', [AllSystemTasks::class, 'getAllTasks']);
+    Route::patch('system_tasks/{id}/accept', [AcceptSystemTask::class, 'updateAccept']);
+    Route::get('system_tasks/random', [GetTenTasks::class, "getRandomTasks"]);
 });
 

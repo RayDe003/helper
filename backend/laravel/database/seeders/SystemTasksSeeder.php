@@ -13,7 +13,7 @@ class SystemTasksSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('user_system_tasks')->insert([
+        DB::table('system_tasks')->insert([
             ['title' => 'Прогуляться на улице минимум 15 минут'],
             ['title' => 'Выпить стакан воды'],
             ['title' => 'Убрать свое рабочее место'],

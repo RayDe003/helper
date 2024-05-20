@@ -51,5 +51,4 @@ class ForTwoWeeksController extends Controller
             ];
         })->values()->all();
     }
-
 }
