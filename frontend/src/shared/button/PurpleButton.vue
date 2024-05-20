@@ -2,7 +2,7 @@
   <base-button
     :font-size="16"
     :font-weight="500"
-    padding="10px 24px 10px 20px"
+    :padding="padding"
     border-radius="26px"
     :bg-transparent="false"
     :full-width="false"
@@ -16,10 +16,24 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 import { ArrowIcon, BaseButton, CrossIcon } from '@/shared';
 
-defineProps({
-  icon: { type: String, default: null }
+const props = defineProps({
+  icon: { type: String, default: null },
+  size: { type: String, default: 'normal' }
+});
+
+const padding = computed(() => {
+  switch (props.size) {
+    case 'normal':
+      return '10px 24px 10px 20px';
+    case 'small':
+      return '8px 20px';
+    default:
+      return 0;
+  }
 });
 </script>
 

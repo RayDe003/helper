@@ -11,7 +11,7 @@ import PlansCard from './PlansCard.vue';
 
 const weeks = eachDayOfInterval({
   start: new Date(),
-  end: new Date(2024, 5, 1)
+  end: new Date(2024, 5, 2)
 });
 </script>
 
