@@ -11,7 +11,6 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
-    "@vuepic/vue-datepicker": "^8.6.0",
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/router": "^10.9.0",

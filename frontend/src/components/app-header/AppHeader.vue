@@ -19,28 +19,32 @@
         Календарь планов
       </router-link>
       <router-link
-        to="/achievement"
-        :class="{ links_selected: route.path === '/achievement' }"
+        to="/achievements"
+        :class="{ links_selected: route.path === '/achievements' }"
       >
-        Ачивки
+        Достижения
       </router-link>
     </div>
     <div class="links">
-      <router-link
-        to="/settings"
-        :class="{ links_selected: route.path === '/settings' }"
-      >
-        Настройки
-      </router-link>
+      <div @click="showSettings">Настройки</div>
       <span @click="logout">Выход</span>
     </div>
+    <system-settings v-if="showedSettings" @close-settings="showSettings" />
   </header>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
+import { SystemSettings } from '@/components';
 import { useAuthUser } from '@/stores';
+
+const showedSettings = ref(false);
+const showSettings = () => {
+  showedSettings.value = !showedSettings.value;
+  console.log(showedSettings.value);
+};
 
 const router = useRouter();
 const route = useRoute();

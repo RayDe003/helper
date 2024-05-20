@@ -49,6 +49,11 @@ const router = createRouter({
             import('@/components/plans/plans-calendar/PlansCalendar.vue')
         }
       ]
+    },
+    {
+      path: '/achievements',
+      name: 'achievements',
+      component: () => import('@/pages/achievements-page/AchievementsPage.vue')
     }
   ]
 });
