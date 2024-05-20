@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Notifications\AddNotificationsController;
 use App\Http\Controllers\SubTasks\AllSubTasksController;
+use App\Http\Controllers\SubTasks\CompleteSubTask;
 use App\Http\Controllers\SubTasks\CreateSubTaskController;
 use App\Http\Controllers\SubTasks\DeleteSubTaskController;
 use App\Http\Controllers\SubTasks\UpdateSubTaskController;
 use App\Http\Controllers\Tasks\AllUsersTasksController;
+use App\Http\Controllers\Tasks\CompleteTaskController;
 use App\Http\Controllers\Tasks\CreateTaskController;
 use App\Http\Controllers\Tasks\DeleteTaskController;
 use App\Http\Controllers\Tasks\ForDayController;
@@ -28,13 +30,19 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/one_task/{task}',[GetOneTaskController::class, 'getTask']);
     Route::patch('/users/update_task/{task}', [UpdateTaskController::class, 'updateTask']);
     Route::delete('/users/delete_task/{userTask}', [DeleteTaskController::class, 'deleteTask']);
+    Route::patch('/tasks/{task}/complete', [CompleteTaskController::class, 'updateStatus']);
+
+    Route::get('/tasks/for_two_weeks', [ForTwoWeeksController::class, "getTwoWeeks"]);
+    Route::get('/tasks/by_date', [ForDayController::class, "getByDate"]);
+    Route::get('/tasks/by_month', [ForMonthController::class, "getByMonth"]);
+
+    Route::post('/tasks/{task}/notification', [AddNotificationsController::class, 'setNotifications']);
+
+    Route::patch('/subtasks/{sub_task}/complete', [CompleteSubTask::class, 'updateStatus']);
+
     Route::post('/tasks/{task}/subtasks', [CreateSubTaskController::class, 'create_sub_task']);
     Route::patch('/tasks/{task}/subtasks/{sub_task}', [UpdateSubTaskController::class, 'updateSubTask']);
     Route::get('/tasks/{task}/subtasks', [AllSubTasksController::class, 'getSubTasks']);
     Route::delete('/tasks/{task}/delete_sub_task/{sub_task}', [DeleteSubTaskController::class, "deleteSubTask"]);
-    Route::get('/tasks/for_two_weeks', [ForTwoWeeksController::class, "getTwoWeeks"]);
-    Route::get('/tasks/by_date', [ForDayController::class, "getByDate"]);
-    Route::get('/tasks/by_month', [ForMonthController::class, "getByMonth"]);
-    Route::post('/tasks/{task}/notification', [AddNotificationsController::class, 'setNotifications']);
 });
 

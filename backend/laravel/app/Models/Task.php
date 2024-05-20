@@ -47,4 +47,9 @@ class Task extends Model
     {
         return $this->hasMany(Notifications::class);
     }
+
+    public function userTask()
+    {
+        return $this->hasOne(UserTask::class);
+    }
 }

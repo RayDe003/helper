@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 
 class GetOneSubTaskController extends Controller
 {
-
     public function getSubTask(SubTask $subTask) : JsonResponse
     {
         return response()->json(['subTask' => $subTask]);

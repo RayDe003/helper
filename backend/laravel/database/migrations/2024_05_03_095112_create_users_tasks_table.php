@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('task_id')->constrained('task');
-            $table->unsignedBigInteger('task_status_id')->default(1);
+            $table->boolean('is_complete')->default(false);
             $table->timestamps();
         });
     }

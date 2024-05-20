@@ -21,7 +21,7 @@ class UpdateSubTaskController extends Controller
 
         if(!$sub_task->task() === $task){
             return response()->json([
-                'error' => 'не та  задача лох.',
+                'error' => 'не та  задача.',
             ], 403);
         }
 

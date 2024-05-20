@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
        $this->call([
            PrioritySeeder::class,
            TaskStatusSeeder::class,
-           SubTaskStatus::class,
+//           SubTaskStatus::class,
            NotTypeSeeder::class,
-           SystemTasksSeeder::class,
-           AcceptSeeders::class
+//           SystemTasksSeeder::class,
+//           AcceptSeeders::class
        ]);
     }
 }

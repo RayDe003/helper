@@ -18,7 +18,6 @@ class AllTasksResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'task_id' => $this->task_id,
-            'task_status_id' => $this->task_status_id,
             'task' => new TaskResource($this->task)
         ];
     }

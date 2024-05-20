@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Exceptions\ValidationErrorTrait;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AddNotificationRequest extends FormRequest
 {
+    use ValidationErrorTrait;
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -26,4 +28,5 @@ class AddNotificationRequest extends FormRequest
             'task_id' => 'required'
         ];
     }
+
 }

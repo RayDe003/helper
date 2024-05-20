@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('sub_tasks', function (Blueprint $table) {
-            $table->foreign('sub_status')->references('id')->on('sub_task_statuses');
+//            $table->foreign('is_complete')->references('id')->on('sub_task_statuses');
             $table->foreign('task_id')->references('id')->on('task');
         });
     }

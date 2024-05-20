@@ -11,7 +11,7 @@ class SubTask extends Model
     protected $fillable = [
         'text',
         'task_id',
-        'sub_status'
+        'is_complete'
     ];
 
     protected $table = 'sub_tasks';
