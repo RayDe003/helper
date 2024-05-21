@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="что-то сделала с системными задачами">
-      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Models/RandomTasks.php" afterDir="false" />
+    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="норм рандом 10 задач">
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SystemTasks/CompleteRandomTask.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SystemTasks/DeleteRandomTask.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SystemTasks/RandomTasksForToday.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SystemTasks/RarandomOneTask.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SystemTasks/GetTenTasks.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SystemTasks/GetTenTasks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/User/UserRegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/User/UserRegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Resources/RandomTasksResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Resources/RandomTasksResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/RandomTasks.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Models/RandomTasks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_16_103729_create_random_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/database/migrations/2024_05_16_103729_create_random_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo30" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo30" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo31_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo31" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo31" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo32_tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000034" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000034" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/accept.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/accept.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/cache.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/cache.ibd" afterDir="false" />
@@ -270,7 +274,7 @@
       <workItem from="1714966245144" duration="48084000" />
       <workItem from="1715169346438" duration="41000" />
       <workItem from="1715571674425" duration="73068000" />
-      <workItem from="1716181406562" duration="31976000" />
+      <workItem from="1716181406562" duration="40756000" />
     </task>
     <task id="LOCAL-00001" summary="ы">
       <option name="closed" value="true" />
@@ -376,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716206995445</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="норм рандом 10 задач">
+      <option name="closed" value="true" />
+      <created>1716276637999</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716276637999</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,6 +419,7 @@
     <MESSAGE value="потыкала, но нужна грушевская" />
     <MESSAGE value="какой-то рефакторинг хз" />
     <MESSAGE value="что-то сделала с системными задачами" />
-    <option name="LAST_COMMIT_MESSAGE" value="что-то сделала с системными задачами" />
+    <MESSAGE value="норм рандом 10 задач" />
+    <option name="LAST_COMMIT_MESSAGE" value="норм рандом 10 задач" />
   </component>
 </project>

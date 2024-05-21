@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_system_task_id')->constrained('users_system_tasks');
             $table->boolean('is_complete')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

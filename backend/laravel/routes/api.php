@@ -8,7 +8,11 @@ use App\Http\Controllers\SubTasks\DeleteSubTaskController;
 use App\Http\Controllers\SubTasks\UpdateSubTaskController;
 use App\Http\Controllers\SystemTasks\AcceptSystemTask;
 use App\Http\Controllers\SystemTasks\AllSystemTasks;
+use App\Http\Controllers\SystemTasks\CompleteRandomTask;
+use App\Http\Controllers\SystemTasks\DeleteRandomTask;
 use App\Http\Controllers\SystemTasks\GetTenTasks;
+use App\Http\Controllers\SystemTasks\RandomTasksForToday;
+use App\Http\Controllers\SystemTasks\RarandomOneTask;
 use App\Http\Controllers\Tasks\AllUsersTasksController;
 use App\Http\Controllers\Tasks\CompleteTaskController;
 use App\Http\Controllers\Tasks\CreateTaskController;
@@ -51,5 +55,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/system_tasks', [AllSystemTasks::class, 'getAllTasks']);
     Route::patch('system_tasks/{id}/accept', [AcceptSystemTask::class, 'updateAccept']);
     Route::get('system_tasks/random', [GetTenTasks::class, "getRandomTasks"]);
+    Route::post('system_tasks/rerandom', [RarandomOneTask::class, 'rerandomTask']);
+    Route::get('system_tasks/today', [RandomTasksForToday::class, 'randomTasksForToday']);
+    Route::delete('system_tasks/delete', [DeleteRandomTask::class, 'deleteRandomTask']);
+    Route::patch('system_tasks/complete', [RandomTasksForToday::class, 'completeRandomTask']);
 });
 

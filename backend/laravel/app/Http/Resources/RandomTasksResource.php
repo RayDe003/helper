@@ -22,6 +22,7 @@ class RandomTasksResource extends JsonResource
             'is_complete' => $this->is_complete,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'deteled_at' => $this->deleted_at
         ];
     }
 }
