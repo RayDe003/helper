@@ -1,5 +1,9 @@
 <template>
-  <div class="checkbox-area" @click="switchCheck">
+  <div
+    class="checkbox-area"
+    :class="{ 'checkbox-area_reverse': reverse }"
+    @click="switchCheck"
+  >
     <div
       class="checkbox"
       :class="{ checkbox_checked: type === 'checkbox' ? isChecked : checked }"
@@ -11,14 +15,16 @@
         hidden
         v-model="isChecked"
         :value="value"
-        :disabled="type === 'checkbox' && isChecked"
+        :disabled="type === 'checkbox' && isChecked && !reverse"
         ref="checkbox"
       />
       <check-icon v-if="type === 'checkbox' ? isChecked : checked" />
     </div>
     <span
       class="checkbox__text"
-      :class="{ 'checkbox_checked-text': type === 'checkbox' && isChecked }"
+      :class="{
+        'checkbox_checked-text': type === 'checkbox' && isChecked && !reverse
+      }"
     >
       <slot />
     </span>
@@ -58,6 +64,12 @@ const props = defineProps({
   }
 });
 
+// const is = computed(() => {
+//   if (props.reverse) {
+//     return props.type === 'checkbox' ? isChecked.value : props.checked;
+//   }
+// });
+
 // eslint-disable-next-line vue/require-prop-types
 const isChecked = defineModel({ default: true });
 const checkbox = ref();
@@ -84,6 +96,11 @@ const switchCheck = () => checkbox.value.click();
     cursor: pointer;
     gap: 10px;
     align-items: center;
+
+    &_reverse {
+      justify-content: space-between;
+      flex-direction: row-reverse;
+    }
   }
   &_checked {
     border: 1px solid $accent-purple;

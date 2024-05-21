@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
 
 import { useAuthUser } from '@/stores';
 

@@ -36,8 +36,8 @@ const achievements = [
   {
     id: 3,
     title: 'Вы пососали 50 хуёв',
-    date: new Date(),
-    completed: false
+    date: new Date('2024-01-15'),
+    completed: true
   }
 ];
 </script>

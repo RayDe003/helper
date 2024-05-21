@@ -10,6 +10,7 @@
       :children="task.children"
       :priority="task.priority"
       :deadline="task.deadline"
+      :reverse="reverse"
       :mode="mode"
       @delete-task="emit('delete-task', task.id)"
       @complete-task="emit('complete-task', task.id)"
@@ -29,6 +30,10 @@ defineProps({
     type: String,
     default: null,
     validator: (value) => ['diary', 'procrastination'].includes(value)
+  },
+  reverse: {
+    type: Boolean,
+    default: false
   }
 });
 const emit = defineEmits([

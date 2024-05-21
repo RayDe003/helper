@@ -29,7 +29,7 @@
       <div @click="showSettings">Настройки</div>
       <span @click="logout">Выход</span>
     </div>
-    <system-settings v-if="showedSettings" @close-settings="showSettings" />
+    <system-settings v-if="showedSettings" @close-settings="hideSettings" />
   </header>
 </template>
 
@@ -42,7 +42,12 @@ import { useAuthUser } from '@/stores';
 
 const showedSettings = ref(false);
 const showSettings = () => {
-  showedSettings.value = !showedSettings.value;
+  showedSettings.value = true;
+  console.log(showedSettings.value);
+};
+
+const hideSettings = () => {
+  showedSettings.value = false;
   console.log(showedSettings.value);
 };
 

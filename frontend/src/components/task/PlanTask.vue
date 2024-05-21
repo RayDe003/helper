@@ -6,6 +6,7 @@
           :id="id"
           :name="mode"
           :value="completed"
+          :reverse="reverse"
           v-model="isChecked"
         >
           {{ mode ? name : trimText(name, 10) }}
@@ -93,6 +94,10 @@ const props = defineProps({
     default: false
   },
   isNewTask: {
+    type: Boolean,
+    default: false
+  },
+  reverse: {
     type: Boolean,
     default: false
   }
