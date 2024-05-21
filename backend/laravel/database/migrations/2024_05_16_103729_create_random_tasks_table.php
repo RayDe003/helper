@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('random_tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('system_task_id')->constrained('users_system_tasks');
+            $table->foreignId('user_system_task_id')->constrained('users_system_tasks');
             $table->boolean('is_complete')->default(false);
             $table->timestamps();
         });

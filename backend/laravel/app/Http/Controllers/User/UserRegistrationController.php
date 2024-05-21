@@ -25,7 +25,7 @@ class UserRegistrationController extends Controller
             UsersSystemTask::create([
                 'user_id' => $user->id,
                 'system_task_id' => $task->id,
-                'accept' => true, // Или любое другое значение по умолчанию
+                'accept' => true,
             ]);
         }
 
