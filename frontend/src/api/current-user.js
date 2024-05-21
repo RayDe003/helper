@@ -6,7 +6,7 @@ import { useAuthUser } from '@/stores';
 import { apiLink } from './index.js';
 
 const authStore = useAuthUser();
-const { userData, token } = storeToRefs(authStore);
+const { userData } = storeToRefs(authStore);
 export const loginUser = async (data) => {
   let errorMessage = null;
   await axios
@@ -29,21 +29,3 @@ export const registerUser = async (data) => {
   });
   return { errorMessage };
 };
-
-// export const getUserData = async () => {
-//   const pending = ref(true);
-//   const error = ref(null);
-//   try {
-//     await axios
-//       .get(apiLink('users/info'), {
-//         headers: {
-//           Accept: `Bearer ${token}`
-//         }
-//       })
-//       .then((response) => console.log(response))
-//       .catch((err) => (error.value = err));
-//   } finally {
-//     pending.value = false;
-//   }
-//   return { pending, error };
-// };
