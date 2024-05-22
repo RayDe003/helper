@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Achievements;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,11 +16,9 @@ class DatabaseSeeder extends Seeder
     {
        $this->call([
            PrioritySeeder::class,
-//           TaskStatusSeeder::class,
-//           SubTaskStatus::class,
            NotTypeSeeder::class,
            SystemTasksSeeder::class,
-//           AcceptSeeders::class
+           AchievementsSeeder::class,
        ]);
     }
 }
