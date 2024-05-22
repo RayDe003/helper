@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Notifications;
 
-use App\Http\Requests\AddNotificationRequest;
 use App\Models\Notifications;
-use App\Models\NotType;
 use App\Models\Task;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;

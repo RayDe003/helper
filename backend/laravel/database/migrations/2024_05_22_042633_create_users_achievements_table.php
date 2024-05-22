@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('achievement_id');
+            $table->integer('progress')->default(0);
             $table->boolean('is_complete')->default(false);
             $table->timestamps();
         });

@@ -12,7 +12,8 @@ class UsersAchievements extends Model
     protected $fillable = [
         'user_id',
         'achievement_id',
-        'is_complete'
+        'is_complete',
+        'progress'
     ];
 
     protected $table = 'users_achievements';

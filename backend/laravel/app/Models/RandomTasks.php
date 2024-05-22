@@ -13,7 +13,8 @@ class RandomTasks extends Model
 
     protected $fillable = [
         'is_complete',
-        'user_system_task_id'
+        'user_system_task_id',
+        'rerandom_count'
     ];
 
     protected $table = 'random_tasks';

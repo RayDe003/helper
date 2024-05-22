@@ -4,15 +4,20 @@ namespace App\Http\Controllers\SystemTasks;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RandomTasksResource;
-use App\Http\Resources\UserSystemTaskResource;
 use App\Models\RandomTasks;
 use App\Models\UsersSystemTask;
+use App\Services\AchievementService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class GetTenTasks extends Controller
 {
+    protected $achievementService;
+
+    public function __construct(AchievementService $achievementService)
+    {
+        $this->achievementService = $achievementService;
+    }
 
     public function getRandomTasks(): JsonResponse
     {
@@ -40,6 +45,26 @@ class GetTenTasks extends Controller
                 ->limit(10)
                 ->with('userSystemTask.systemTask')
                 ->get();
+
+            $randomTaskCount = RandomTasks::whereHas('userSystemTask', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->count();
+
+            if ($randomTaskCount >= 10) {
+                $this->achievementService->updateAchievements($user, 'procrastination_mode', 1);
+            }
+
+            $taskCompletedCount = RandomTasks::whereHas('userSystemTask', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+                ->whereHas('userSystemTask.systemTask', function ($query) {
+                    $query->where('id', 20);
+                })
+                ->count();
+
+            if ($taskCompletedCount >= 20) {
+                $this->achievementService->updateAchievements($user, 'quiet_minute', 1);
+            }
 
             return RandomTasksResource::collection($latestRandomTasks)->response();
 

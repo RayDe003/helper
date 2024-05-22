@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Tasks;
 
 use App\Http\Resources\TaskResource;
-use App\Models\Task;
 use App\Models\UserTask;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;

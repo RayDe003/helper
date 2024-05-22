@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_system_task_id')->constrained('users_system_tasks');
             $table->boolean('is_complete')->default(false);
+            $table->integer('rerandom_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

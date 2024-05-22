@@ -4,15 +4,21 @@ namespace App\Http\Controllers\SystemTasks;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RandomTasksResource;
-use App\Http\Resources\UserSystemTaskResource;
 use App\Models\RandomTasks;
 use App\Models\UsersSystemTask;
+use App\Services\AchievementService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RarandomOneTask extends Controller
 {
+    protected $achievementService;
+
+    public function __construct(AchievementService $achievementService)
+    {
+        $this->achievementService = $achievementService;
+    }
 
     public function rerandomTask(Request $request): JsonResponse
     {
@@ -44,9 +50,13 @@ class RarandomOneTask extends Controller
                 return response()->json(['message' => 'Нет доступных задач для перерандома'], 404);
             }
 
+            $randomTask->increment('rerandom_count');
             $randomTask->update([
                 'user_system_task_id' => $newTask->id,
             ]);
+            if ($randomTask->rerandom_count > 5) {
+                $this->achievementService->updateAchievements($user, 're_random_task', 1);
+            }
 
             return response()->json(new RandomTasksResource($randomTask));
         } else {

@@ -18,6 +18,7 @@ class Task extends Model
         'deadline',
         'file',
         'priority_id',
+        'name_changes_count'
     ];
 
     protected $table = 'task';

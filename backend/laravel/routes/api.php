@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Achievements\AllAchievementsController;
 use App\Http\Controllers\Notifications\AddNotificationsController;
+use App\Http\Controllers\Notifications\UpdateNotificationsController;
 use App\Http\Controllers\SubTasks\AllSubTasksController;
 use App\Http\Controllers\SubTasks\CompleteSubTask;
 use App\Http\Controllers\SubTasks\CreateSubTaskController;
@@ -44,6 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/tasks/by_month', [ForMonthController::class, "getByMonth"]);
 
     Route::post('/tasks/{task}/notification', [AddNotificationsController::class, 'setNotifications']);
+    Route::patch('/tasks/{task}/notification_change', [UpdateNotificationsController::class, 'updateNotifications']);
 
     Route::patch('/subtasks/{sub_task}/complete', [CompleteSubTask::class, 'updateStatus']);
 
@@ -59,5 +62,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('system_tasks/today', [RandomTasksForToday::class, 'randomTasksForToday']);
     Route::delete('system_tasks/delete', [DeleteRandomTask::class, 'deleteRandomTask']);
     Route::patch('system_tasks/complete', [RandomTasksForToday::class, 'completeRandomTask']);
+
+    Route::get('/achievements', [AllAchievementsController::class, 'getAllAchievements']);
 });
 

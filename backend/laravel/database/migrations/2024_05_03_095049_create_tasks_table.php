@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('file')->nullable();
             $table->date('deadline')->default(now());
             $table->unsignedBigInteger('priority_id')->default(1);
+            $table->integer('name_changes_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
