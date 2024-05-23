@@ -19,20 +19,30 @@ use App\Http\Controllers\Tasks\AllUsersTasksController;
 use App\Http\Controllers\Tasks\CompleteTaskController;
 use App\Http\Controllers\Tasks\CreateTaskController;
 use App\Http\Controllers\Tasks\DeleteTaskController;
+use App\Http\Controllers\Tasks\FileUploadController;
 use App\Http\Controllers\Tasks\ForDayController;
 use App\Http\Controllers\Tasks\ForMonthController;
 use App\Http\Controllers\Tasks\ForTwoWeeksController;
 use App\Http\Controllers\Tasks\GetOneTaskController;
 use App\Http\Controllers\Tasks\UpdateTaskController;
+use App\Http\Controllers\User\EmailVerificationController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\UserRegistrationController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [UserRegistrationController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 
+Route::get('/email/verify/{user}/{hash}', [EmailVerificationController::class, 'verify'])
+    ->middleware('signed')
+    ->name('verification.verify');
+
 
 Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('resend-email', [EmailVerificationController::class, 'resend']);
+
     Route::post('/create_task',[CreateTaskController::class, 'create_task']);
     Route::get('/users/info', [LoginController::class, 'info']);
     Route::get('/users/tasks', [AllUsersTasksController::class, 'getUserTasks']);
@@ -64,5 +74,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('system_tasks/complete', [RandomTasksForToday::class, 'completeRandomTask']);
 
     Route::get('/achievements', [AllAchievementsController::class, 'getAllAchievements']);
+
+    Route::post('/tasks/{task}/upload', [FileUploadController::class, 'upload']);
+    Route::get('/tasks/{task}/download', [FileUploadController::class, 'download']);
 });
 

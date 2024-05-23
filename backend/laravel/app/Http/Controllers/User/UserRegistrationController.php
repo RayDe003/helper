@@ -8,9 +8,12 @@ use App\Models\SystemTask;
 use App\Models\User;
 use App\Models\UsersAchievements;
 use App\Models\UsersSystemTask;
+use App\Notifications\VerifyEmailNotification;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 
 class UserRegistrationController extends Controller
 {
@@ -40,6 +43,11 @@ class UserRegistrationController extends Controller
                 'progress' => 0,
             ]);
         }
+
+
+        $signedRoute = URL::temporarySignedRoute('verification.verify', now()->addDay(), ['hash' => sha1($user->getEmailForVerification()), 'user' => $user]);
+
+        $user->notify(new VerifyEmailNotification($signedRoute));
 
         return response()->json([
             'message' => 'Регистрация прошла успешно!',

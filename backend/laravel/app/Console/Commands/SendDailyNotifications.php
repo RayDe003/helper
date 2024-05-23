@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\Notifications\VerifyEmailNotification;
 use Illuminate\Console\Command;
 use App\Models\Task;
 use App\Notifications\TaskReminderNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\URL;
 
 class SendDailyNotifications extends Command
 {

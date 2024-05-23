@@ -33,14 +33,14 @@ class SendWeeklyNotifications extends Command
                 $query->where('not_type_id', 2);
             })->with(['notifications', 'users'])->get();
 
-            foreach ($tasksWithWeeklyNotifications as $task) {
-                foreach ($task->notifications as $notification) {
-                    if ($task->deadline > $currentDate) {
-                        $user = $task->users()->first()->user()->first();
-                        $user->notify(new TaskReminderNotification($task));
-                    }
+        foreach ($tasksWithWeeklyNotifications as $task) {
+            foreach ($task->notifications as $notification) {
+                if (Carbon::now()->isMonday() && $task->deadline >= Carbon::today()) {
+                    $user = $task->users()->first()->user()->first();
+                    $user->notify(new TaskReminderNotification($task));
                 }
             }
+        }
 
             $this->info('Weekly notifications sent successfully.');
 

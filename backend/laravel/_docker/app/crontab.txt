@@ -3,5 +3,4 @@
 0       2       *       *       *       run-parts /etc/periodic/daily
 0       3       *       *       6       run-parts /etc/periodic/weekly
 0       5       1       *       *       run-parts /etc/periodic/monthly
-*       *       *       *       *       php artisan queue:work --daemon >> /dev/null 2>&1
-*       *       *       *       *       php artisan notifications:send-daily >> /dev/null 2>&1
+*       *       *       *       *       php /var/www/artisan notifications:send-daily

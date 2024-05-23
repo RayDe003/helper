@@ -18,6 +18,7 @@ services:
             dockerfile: _docker/app/Dockerfile
         volumes:
             - ./:/var/www
+        entrypoint: [ "/usr/bin/supervisord", "-n" ]
         depends_on:
             - db
         container_name: helper_app
