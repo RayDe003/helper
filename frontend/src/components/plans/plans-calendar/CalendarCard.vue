@@ -4,7 +4,9 @@
       <div class="card-date__day">{{ getDate(date) }}</div>
       <p>{{ weekday }}</p>
     </div>
-    <purple-button size="small" @click="goToDay">Планы на день</purple-button>
+    <purple-button v-if="has_tasks" size="small" @click="goToDay">
+      Планы на день
+    </purple-button>
   </article>
 </template>
 
@@ -13,10 +15,11 @@ import { getDate, getMonth, getYear, intlFormat } from 'date-fns';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { PurpleButton } from '@/shared/index.js';
+import { PurpleButton } from '@/shared';
 
 const props = defineProps({
-  date: { type: [Date, String], required: true }
+  date: { type: [Date, String], required: true },
+  has_tasks: { type: [Boolean, Number], default: false }
 });
 
 const router = useRouter();

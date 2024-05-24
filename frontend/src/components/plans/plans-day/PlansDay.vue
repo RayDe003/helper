@@ -13,13 +13,14 @@
     />
     <tasks-refresher
       v-if="+initMode"
-      :tasks-length="tasks.length"
-      @click="refreshKey++"
+      :tasks-length="tasksProcrastination.length"
+      @click="getRandomTasks"
     />
     <task-list
+      v-if="tasksProcrastination || tasksDaily"
       :key="refreshKey"
       :mode="initMode ? 'procrastination' : 'diary'"
-      :tasks="tasks"
+      :tasks="initMode ? tasksProcrastination : tasksDaily"
       @delete-task="deleteTask"
       @complete-task="completeTask"
       @change-task="changeTask"
@@ -33,13 +34,14 @@
       :setting-mode="true"
       :is-new-task="true"
       :id="`new-${createdTaskId}`"
-      :name="createdTaskData.name"
+      :title="createdTaskData.title"
       :description="createdTaskData.description"
       :children="createdTaskData.children"
-      :completed="createdTaskData.completed"
-      :priority="createdTaskData.priority"
+      :is_complete="createdTaskData.is_complete"
+      :priority_id="createdTaskData.priority_id"
       :deadline="createdTaskData.deadline"
       @change-task="changeTask"
+      @create-mode-leave="newTask = false"
     />
   </section>
   <purple-button
@@ -54,21 +56,28 @@
 
 <script setup>
 import { useRouteQuery } from '@vueuse/router';
-import { computed, reactive, ref } from 'vue';
+import { computed, onMounted, reactive, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { PlanTask, TaskList, TasksRefresher } from '@/components';
 import {
-  tasksDiary,
-  tasksProcrastination
-} from '@/components/task/model/tasks.js';
-import { BaseSelect, PurpleButton } from '@/shared';
-import { LocalTime } from '@/shared/index.js';
+  completeSystemTaskRequest,
+  completeTaskRequest,
+  createTaskRequest,
+  deleteTaskRequest,
+  getDailySystemTasksRequest,
+  getDailyTasksRequest,
+  getRandomTasksRequest,
+  randomizeSystemTaskRequest,
+  updateTaskRequest
+} from '@/api';
+import { PlanTask, TaskList, TasksRefresher } from '@/components';
+import { BaseSelect, LocalTime, PurpleButton } from '@/shared';
 
 const initMode = useRouteQuery('mode', 0, { transform: Number });
 const newTask = ref(false);
 
 const route = useRoute();
+
 const paramsDate = computed(() => {
   const day = route.params?.day;
   const month = route.params?.month;
@@ -78,77 +87,99 @@ const paramsDate = computed(() => {
 });
 
 const refreshKey = ref(1);
-const tasks = computed(() =>
-  initMode.value ? tasksProcrastination.value : tasksDiary.value
-);
+const tasksDaily = ref([]);
+const tasksProcrastination = ref([]);
 
-const switchMode = (value) => (initMode.value = value);
+const switchMode = (value) => {
+  refreshKey.value++;
+  initMode.value = value;
+};
 
 const deleteTask = (id) => {
-  initMode.value
-    ? tasksProcrastination.value.splice(
-        tasksProcrastination.value.findIndex((item) => item.id === id),
-        1
-      )
-    : tasksDiary.value.splice(
-        tasksDiary.value.findIndex((item) => item.id === id),
-        1
-      );
+  try {
+    initMode.value ? console.log('В разработке') : deleteTaskRequest(id);
+  } finally {
+    getDailyTasks();
+  }
 };
-const completeTask = (id) => {
-  initMode.value
-    ? tasksProcrastination.value.map((task) => {
-        if (task.id === id) task.completed = true;
-      })
-    : tasksDiary.value.map((task) => {
-        if (task.id === id) task.completed = true;
-      });
-};
+const completeTask = (id) =>
+  initMode.value ? completeSystemTaskRequest(id) : completeTaskRequest(id);
+
+const getRandomTasks = () =>
+  getRandomTasksRequest().then(() => getDailyTasks());
 
 const completeSubtask = (data) => {
-  tasksDiary.value.map((task) => {
-    if (
-      task.id === data[0] &&
-      task.children.find((child) => child.task_id === data[1])
-    ) {
-      task.children[
-        task.children.findIndex((child) => child.task_id === data[1])
-      ].completed = true;
-    }
-  });
+  // tasksDiary.value.map((task) => {
+  //   if (
+  //     task.id === data[0] &&
+  //     task.children.find((child) => child.task_id === data[1])
+  //   ) {
+  //     task.children[
+  //       task.children.findIndex((child) => child.task_id === data[1])
+  //     ].completed = true;
+  //   }
+  // });
 };
 const changeTask = (data) => {
   if (newTask.value) {
-    tasksDiary.value.push(data);
+    createTaskRequest(data).then((response) =>
+      tasksDaily.value.push(response.data.task)
+    );
     newTask.value = false;
     return;
   }
-  tasksDiary.value.map((task) => {
+  updateTaskRequest(data.id, data);
+
+  tasksDaily.value.map((task) => {
     if (task.id === data.id) {
-      task.name = data.name;
+      task.title = data.title;
       task.description = data.description;
-      task.priority = data.priority;
+      task.priority_id = data.priority_id;
       task.deadline = data.deadline;
     }
   });
 };
-const randomizeTask = (id) => {
-  console.log(id);
-  // todo: refresh tasks
-};
+const randomizeTask = (id) =>
+  randomizeSystemTaskRequest(id).then(() => getDailyTasks());
 
 const createdTaskId = ref(1);
 const createdTaskData = reactive({
-  name: 'Новая задача',
+  title: 'Новая задача',
   description: 'Описание',
-  completed: false,
-  priority: 1,
+  priority_id: 1,
   deadline: null
 });
 const createTask = () => {
-  createdTaskId.value++;
   newTask.value = true;
 };
+
+const getDailyTasks = () => {
+  if (initMode.value) {
+    getDailySystemTasksRequest().then(
+      (response) => (tasksProcrastination.value = response.data.data)
+    );
+  } else {
+    getDailyTasksRequest(
+      paramsDate.value.day
+        ? `${paramsDate.value.year}-${paramsDate.value.month}-${paramsDate.value.day}`
+        : null
+    ).then((response) => (tasksDaily.value = response.data.tasks));
+  }
+};
+
+watch(paramsDate, () => getDailyTasks());
+watch([tasksDaily, tasksProcrastination], () => {
+  refreshKey.value++;
+  if (tasksDaily.value) {
+    createdTaskId.value = tasksDaily.value.length
+      ? tasksDaily.value.at(-1).id + 1
+      : 1;
+  }
+});
+
+onMounted(async () => {
+  await getDailyTasks();
+});
 </script>
 
 <style scoped lang="scss">

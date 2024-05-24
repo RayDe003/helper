@@ -4,8 +4,7 @@
 </template>
 
 <script setup>
-import { ReloadIcon } from '@/shared';
-import RotateIcon from '@/shared/icons/RotateIcon.vue';
+import { ReloadIcon, RotateIcon } from '@/shared';
 
 defineProps({
   tasksLength: { type: Number, default: 0 }
@@ -15,6 +14,7 @@ defineProps({
 <style scoped lang="scss">
 .refresher {
   display: flex;
+  width: fit-content;
   cursor: pointer;
   align-items: center;
   gap: 10px;

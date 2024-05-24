@@ -1,5 +1,10 @@
 <template>
-  <base-checkbox :id="id" name="subtask" :value="completed" v-model="isChecked">
+  <base-checkbox
+    :id="id"
+    name="subtask"
+    :value="is_complete"
+    v-model="isChecked"
+  >
     <slot />
   </base-checkbox>
 </template>
@@ -11,10 +16,10 @@ import { BaseCheckbox } from '@/shared';
 
 const props = defineProps({
   id: { type: [Number, String], required: true },
-  completed: { type: Boolean, default: false }
+  is_complete: { type: [Number, Boolean], default: false }
 });
 
-const isChecked = ref(props.completed);
+const isChecked = ref(props.is_complete);
 const emit = defineEmits(['complete-subtask']);
 
 watch(isChecked, () => {

@@ -1,10 +1,10 @@
 <template>
-  <article class="achievement" :class="{ achievement_completed: completed }">
+  <article class="achievement" :class="{ achievement_completed: is_complete }">
     <div class="achievement__left">
-      <achievements-icon :color="completed ? '#9747FF' : '#AAAAAA'" />
+      <achievements-icon :color="is_complete ? '#9747FF' : '#AAAAAA'" />
       {{ title }}
     </div>
-    <div class="achievement__right" v-if="completed">
+    <div class="achievement__right" v-if="is_complete">
       Получено {{ dateForPreview }} <complete-icon />
     </div>
   </article>
@@ -21,7 +21,7 @@ const props = defineProps({
   id: { type: Number, required: true },
   title: { type: String, default: '' },
   date: { type: [Date, String], default: new Date() },
-  completed: { type: Boolean, default: false }
+  is_complete: { type: [Number, Boolean], default: false }
 });
 
 const dateForPreview = computed(() =>

@@ -1,15 +1,22 @@
 <template>
   <section class="calendar">
     <month-switcher class="calendar__switcher" @current-date="getActualDate" />
-    <section class="calendar-list">
-      <calendar-card v-for="(day, ind) in daysList" :key="ind" :date="day" />
+    <section class="calendar-list" :key="refreshKey">
+      <calendar-card
+        v-for="(day, ind) in daysList"
+        :key="ind"
+        :date="day.date"
+        :has_tasks="day.has_tasks"
+      />
     </section>
   </section>
 </template>
 
 <script setup>
-import { eachDayOfInterval, getDaysInMonth } from 'date-fns';
+import { getMonth, isToday } from 'date-fns';
 import { onMounted, ref } from 'vue';
+
+import { getMonthDaysRequest } from '@/api';
 
 import CalendarCard from './CalendarCard.vue';
 import MonthSwitcher from './MonthSwitcher.vue';
@@ -17,24 +24,16 @@ import MonthSwitcher from './MonthSwitcher.vue';
 const actualDate = ref(new Date());
 
 const daysList = ref([]);
+const refreshKey = ref(1);
 
-const getDays = () => {
-  if (!actualDate.value) return;
-  daysList.value = eachDayOfInterval({
-    start: new Date(
-      actualDate.value.getFullYear(),
-      actualDate.value.getMonth(),
-      1
-    ),
-    end: new Date(
-      actualDate.value.getFullYear(),
-      actualDate.value.getMonth(),
-      getDaysInMonth(actualDate.value)
-    )
-  });
-};
+const getDays = () =>
+  getMonthDaysRequest(
+    isToday(actualDate.value) ? null : getMonth(actualDate.value) + 1
+  ).then((response) => (daysList.value = response.data.days));
 
 const getActualDate = (date) => {
+  daysList.value = [];
+  refreshKey.value++;
   actualDate.value = date;
   getDays();
 };

@@ -13,11 +13,11 @@
     </p>
     <section class="settings__list">
       <system-task
-        v-for="task in tasksDiary"
+        v-for="task in systemTasks"
         :id="task.id"
         :key="task.id"
-        :completed="task.completed"
-        :title="task.name"
+        :accept="task.accept"
+        :title="task.title"
         @change-status="changeStatus"
       />
     </section>
@@ -26,22 +26,25 @@
 
 <script setup>
 import { onClickOutside } from '@vueuse/core';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
+import { acceptSystemTaskRequest, getAllSystemTasksRequest } from '@/api';
 import SystemTask from '@/components/settings/SystemTask.vue';
-import { tasksDiary } from '@/components/task/model/tasks.js';
 import { CrossIcon } from '@/shared';
 
 const emits = defineEmits(['close-settings']);
 
 const settings = ref(null);
+const systemTasks = ref([]);
 
-const changeStatus = ({ id, status }) => {
-  tasksDiary.value.map((item) => {
-    if (item.id === id) item.completed = status;
-  });
-};
+const changeStatus = ({ id, accept }) => acceptSystemTaskRequest(id, accept);
 onClickOutside(settings, () => emits('close-settings'));
+
+onMounted(() => {
+  getAllSystemTasksRequest().then(
+    (response) => (systemTasks.value = response.data.data)
+  );
+});
 </script>
 
 <style scoped lang="scss">
@@ -73,6 +76,11 @@ onClickOutside(settings, () => emits('close-settings'));
   }
 
   &__list {
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+    height: 80dvh;
     padding: 5px;
     display: flex;
     flex-direction: column;

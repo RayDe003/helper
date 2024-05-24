@@ -4,7 +4,7 @@
       v-for="subTask in subTasks"
       :key="`sub-${subTask.task_id}`"
       :id="`sub-${subTask.task_id}`"
-      :completed="subTask.completed"
+      :is_complete="subTask.is_complete"
       @complete-subtask="emit('complete-subtask', subTask.task_id)"
     >
       {{ mode ? subTask.name : trimText(subTask.name, 11) }}

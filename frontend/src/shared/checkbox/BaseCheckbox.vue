@@ -79,7 +79,7 @@ const switchCheck = () => checkbox.value.click();
 <style scoped lang="scss">
 .checkbox {
   border: 1px solid $accent-black;
-  width: 15px;
+  min-width: 15px;
   height: 15px;
   display: flex;
   align-items: center;

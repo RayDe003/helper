@@ -2,55 +2,34 @@ import axios from 'axios';
 
 import { apiHeaders, apiLink } from './index.js';
 
-export const getAllSystemTasks = () => {
-  let tasks = null;
-  try {
-    axios
-      .get(apiLink('system_tasks'), { headers: apiHeaders })
-      .then((response) => (tasks = response.tasks));
-  } catch (e) {
-    return { tasks, e };
-  }
-  return { tasks };
-};
+export const getAllSystemTasksRequest = () =>
+  axios.get(apiLink('system_tasks'), { headers: apiHeaders });
+export const getDailySystemTasksRequest = () =>
+  axios.get(apiLink('system_tasks/today'), { headers: apiHeaders });
 
-export const getDailySystemTasks = () => {
-  let tasks = null;
-  try {
-    axios
-      .get(apiLink('system_tasks/today'), { headers: apiHeaders })
-      .then((response) => (tasks = response.tasks));
-  } catch (e) {
-    return { tasks, e };
-  }
-  return { tasks };
-};
+export const getRandomTasksRequest = () =>
+  axios.get(apiLink('system_tasks/random'), { headers: apiHeaders });
 
-export const getRandomTasks = () => {
-  let tasks = null;
-  try {
-    axios
-      .get(apiLink('system_tasks/random'), { headers: apiHeaders })
-      .then((response) => (tasks = response.tasks));
-  } catch (e) {
-    return { tasks, e };
-  }
-  return { tasks };
-};
-
-export const randomizeSystemTask = (id) =>
+export const randomizeSystemTaskRequest = (id) =>
   axios.post(
     apiLink('system_tasks/rerandom'),
     { random_task_id: id },
     { headers: apiHeaders }
   );
 
-export const deleteSystemTask = () =>
-  axios.delete(apiLink('system_tasks/rerandom'), { headers: apiHeaders });
-
-export const completeSystemTask = (id) =>
+export const acceptSystemTaskRequest = (id, accept) =>
   axios.patch(
-    apiLink('system_tasks/rerandom'),
+    apiLink(`system_tasks/${id}/accept`),
+    { accept: accept },
+    { headers: apiHeaders }
+  );
+
+export const deleteSystemTaskRequest = (id) =>
+  axios.delete(apiLink('system_tasks/delete'), { headers: apiHeaders });
+
+export const completeSystemTaskRequest = (id) =>
+  axios.patch(
+    apiLink('system_tasks/complete'),
     { random_task_id: id },
     { headers: apiHeaders }
   );

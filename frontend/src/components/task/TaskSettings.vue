@@ -3,9 +3,9 @@
     <input
       type="text"
       class="settings-input"
-      @change="inputData('name')"
-      v-model="settingsData.name"
-      @keyup.enter="submitSettings('name')"
+      @change="inputData('title')"
+      v-model="settingsData.title"
+      @keyup.enter="submitSettings('title')"
     />
     <input
       type="text"
@@ -51,7 +51,7 @@
         <input
           v-for="(child, ind) in children"
           :key="child.task_id"
-          v-model="child.name"
+          v-model="child.title"
           class="settings-input"
           type="text"
           @change="inputData('children', ind)"
@@ -60,7 +60,7 @@
       </section>
     </div>
     <drop-select
-      v-model="settingsData.priority"
+      v-model="settingsData.priority_id"
       :parameters="priorityParameters"
       name="priority"
       title="Приоритет"
@@ -77,7 +77,7 @@ import { CalendarIcon, CheckListIcon, CrossIcon, DropSelect } from '@/shared';
 
 const props = defineProps({
   id: { type: [String, Number], required: true },
-  name: { type: String, default: 'Новая задача' },
+  title: { type: String, default: 'Новая задача' },
   description: { type: String, default: 'Описание' },
   deadline: {
     type: [Date, String],
@@ -87,7 +87,7 @@ const props = defineProps({
     type: Array,
     default: () => []
   },
-  priority: { type: Number, default: null }
+  priority_id: { type: Number, default: null }
 });
 
 const emits = defineEmits(['change-task']);
@@ -112,11 +112,11 @@ const priorityParameters = [
 
 const settingsData = reactive({
   id: props.id,
-  name: props.name,
+  title: props.title,
   description: props.description,
   deadline: props.deadline,
-  children: props.children,
-  priority: props.priority
+  // children: props.children,
+  priority_id: props.priority_id
 });
 
 const dateForPreview = computed(() => {
@@ -140,7 +140,7 @@ const dateForPreview = computed(() => {
 const inputData = (settingName, index = null) => {
   if (settingsData[settingName] === '') {
     switch (settingName) {
-      case 'name':
+      case 'title':
         settingsData[settingName] = 'Новая задача';
         break;
       case 'description':
@@ -148,8 +148,8 @@ const inputData = (settingName, index = null) => {
         break;
     }
   }
-  if (index !== null && !settingsData.children[index]?.name) {
-    settingsData.children[index].name = 'Подзадача';
+  if (index !== null && !settingsData.children[index]?.title) {
+    settingsData.children[index].title = 'Подзадача';
   }
 };
 
@@ -159,8 +159,8 @@ const addSubtask = () => {
   rerenderSubsKey.value++;
   settingsData.children.push({
     task_id: `new-sub-${settingsData.children.length}`,
-    completed: false,
-    name: 'Подзадача'
+    is_complete: false,
+    title: 'Подзадача'
   });
 };
 
@@ -176,7 +176,7 @@ const clickDatePicker = () => datePicker.value.showPicker();
 .settings {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   gap: 15px;
 
   &-input {

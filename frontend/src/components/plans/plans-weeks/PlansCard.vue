@@ -2,7 +2,11 @@
   <article class="card">
     <local-time :date="date" />
     <section class="card-tasks">
-      <task-list :tasks="tasksDiary" />
+      <task-list
+        :tasks="props.tasks"
+        @delete-task="deleteTask"
+        @complete-task="completeTask"
+      />
     </section>
     <purple-button icon="arrow" @click="seeMore">Подробнее</purple-button>
   </article>
@@ -12,12 +16,13 @@
 import { getDate, getMonth, getYear } from 'date-fns';
 import { useRouter } from 'vue-router';
 
+import { completeTaskRequest, deleteTaskRequest } from '@/api';
 import { TaskList } from '@/components';
-import { tasksDiary } from '@/components/task/model/tasks.js';
 import { LocalTime, PurpleButton } from '@/shared';
 
 const props = defineProps({
-  date: { type: [Date, String], default: new Date() }
+  date: { type: [Date, String], default: new Date() },
+  tasks: { type: Array, default: () => [] }
 });
 
 const router = useRouter();
@@ -32,6 +37,9 @@ const seeMore = () => {
     }
   });
 };
+
+const deleteTask = (id) => deleteTaskRequest(id);
+const completeTask = (id) => completeTaskRequest(id);
 </script>
 
 <style scoped lang="scss">

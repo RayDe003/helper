@@ -1,15 +1,20 @@
 <template>
   <article class="task" :class="{ 'task-settings': settingMode }">
+    <cross-icon
+      class="task-cross"
+      v-if="isNewTask"
+      @click="emit('create-mode-leave')"
+    />
     <div v-if="!settingMode" class="task-wrapper">
       <p class="task-checkbox">
         <base-checkbox
           :id="id"
           :name="mode"
-          :value="completed"
+          :value="is_complete"
           :reverse="reverse"
           v-model="isChecked"
         >
-          {{ mode ? name : trimText(name, 10) }}
+          {{ mode ? title : trimText(title, 10) }}
         </base-checkbox>
         <corner-icon
           class="task-checkbox__icon"
@@ -28,10 +33,10 @@
     </div>
     <task-settings
       :id="id"
-      :name="name"
+      :title="title"
       :description="description"
       :children="children"
-      :priority="priority"
+      :priority_id="priority_id"
       :deadline="deadline"
       @change-task="changeTask"
       v-else
@@ -50,8 +55,7 @@
 import { ref, watch } from 'vue';
 
 import { SubtaskList, TaskSettings } from '@/components';
-import { BaseCheckbox, ToastMenu } from '@/shared';
-import { CornerIcon } from '@/shared/index.js';
+import { BaseCheckbox, CornerIcon, CrossIcon, ToastMenu } from '@/shared';
 
 import { trimText } from './model/functions.js';
 
@@ -65,7 +69,7 @@ const props = defineProps({
     type: [String, Number],
     required: true
   },
-  name: {
+  title: {
     type: String,
     default: ''
   },
@@ -77,7 +81,7 @@ const props = defineProps({
     type: Array,
     default: () => []
   },
-  priority: {
+  priority_id: {
     type: Number,
     default: null
   },
@@ -85,8 +89,8 @@ const props = defineProps({
     type: [Date, String],
     default: null
   },
-  completed: {
-    type: Boolean,
+  is_complete: {
+    type: [Number, Boolean],
     default: false
   },
   settingMode: {
@@ -108,10 +112,11 @@ const emit = defineEmits([
   'change-task',
   'create-task',
   'complete-subtask',
-  'randomize-task'
+  'randomize-task',
+  'create-mode-leave'
 ]);
 
-const isChecked = ref(props.completed);
+const isChecked = ref(props.is_complete);
 const settingMode = ref(props.settingMode);
 
 const showedSubtasks = ref(false);
@@ -139,6 +144,14 @@ watch(isChecked, () => {
   justify-content: space-between;
   align-items: start;
   user-select: none;
+  position: relative;
+  &-cross {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
   &-settings {
     background: $light-purple;
     padding: 17px 20px;

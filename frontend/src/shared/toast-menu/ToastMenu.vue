@@ -91,6 +91,7 @@ const menu = ref();
       padding: 3px 20px;
       line-height: 150%;
       cursor: pointer;
+      white-space: nowrap;
       &:hover {
         background: rgba($accent-purple, 0.2);
       }

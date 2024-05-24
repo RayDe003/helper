@@ -9,7 +9,7 @@
           :key="achievement.id"
           :date="achievement.date"
           :title="achievement.title"
-          :completed="achievement.completed"
+          :is_complete="achievement.is_complete"
         />
       </section>
     </section>
@@ -17,29 +17,19 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
+
+import { getAchievementsRequest } from '@/api';
 import { AchievementItem } from '@/components';
 import { MainLayout } from '@/layouts';
 
-const achievements = [
-  {
-    id: 1,
-    title: 'Вы выполнили 10 задач с приоритетом “Высокий”',
-    date: new Date(),
-    completed: true
-  },
-  {
-    id: 2,
-    title: 'Вы воспользовались режимом “спасение от прокрастинации” 5 раз',
-    date: new Date(),
-    completed: false
-  },
-  {
-    id: 3,
-    title: 'Вы пососали 50 хуёв',
-    date: new Date('2024-01-15'),
-    completed: true
-  }
-];
+const achievements = ref([]);
+
+onMounted(() =>
+  getAchievementsRequest().then(
+    (response) => (achievements.value = response.data.data)
+  )
+);
 </script>
 
 <style scoped lang="scss">

@@ -3,7 +3,7 @@ import { ref } from 'vue';
 export const tasksDiary = ref([
   {
     id: 'd-1',
-    name: 'Помидоры',
+    title: 'Помидоры',
     description: 'Купить на рынке у бабы тани',
     completed: false,
     priority: 1,
@@ -13,18 +13,18 @@ export const tasksDiary = ref([
       {
         task_id: 'sub-1',
         completed: false,
-        name: 'Купить бомжа'
+        title: 'Купить бомжа'
       },
       {
         task_id: 'sub-2',
         completed: false,
-        name: 'Купи бомжа'
+        title: 'Купи бомжа'
       }
     ]
   },
   {
     id: 'd-2',
-    name: 'Огурцы',
+    title: 'Огурцы',
     description: 'Купить на рынке у бабы тани',
     priority: 1,
     completed: false,
@@ -36,7 +36,7 @@ export const tasksDiary = ref([
 export const tasksProcrastination = ref([
   {
     id: 'p-1',
-    name: 'Купить дошик',
+    title: 'Купить дошик',
     description: 'Купить на рынке у бабы тани',
     priority: 1,
     completed: false,
@@ -45,7 +45,7 @@ export const tasksProcrastination = ref([
   },
   {
     id: 'p-2',
-    name: 'Продать слона',
+    title: 'Продать слона',
     description: 'Купить на рынке у бабы тани',
     priority: 1,
     completed: false,

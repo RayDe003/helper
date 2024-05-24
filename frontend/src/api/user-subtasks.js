@@ -2,8 +2,8 @@ import axios from 'axios';
 
 import { apiHeaders, apiLink } from './index.js';
 
-export const createSubTask = (taskId, subTaskId, data) =>
-  axios.post(apiLink(`tasks/${taskId}/subtasks/${subTaskId}`), data, {
+export const createSubTask = (taskId, data) =>
+  axios.post(apiLink(`tasks/${taskId}/subtasks`), data, {
     headers: apiHeaders
   });
 

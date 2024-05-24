@@ -29,7 +29,7 @@
       <div @click="showSettings">Настройки</div>
       <span @click="logout">Выход</span>
     </div>
-    <system-settings v-if="showedSettings" @close-settings="hideSettings" />
+    <system-settings v-show="showedSettings" @close-settings="hideSettings" />
   </header>
 </template>
 

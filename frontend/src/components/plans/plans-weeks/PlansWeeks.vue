@@ -1,17 +1,27 @@
 <template>
   <section class="weeks">
-    <plans-card v-for="item in weeks" :key="item" :date="item" />
+    <plans-card
+      v-for="(day, index) in weeks"
+      :key="index"
+      :date="day.date"
+      :tasks="day.tasks"
+    />
   </section>
 </template>
 
 <script setup>
-import { eachDayOfInterval } from 'date-fns';
+import { onMounted, ref } from 'vue';
+
+import { getWeeksTasksRequest } from '@/api';
 
 import PlansCard from './PlansCard.vue';
 
-const weeks = eachDayOfInterval({
-  start: new Date(),
-  end: new Date(2024, 5, 3)
+const weeks = ref([]);
+
+onMounted(() => {
+  getWeeksTasksRequest().then(
+    (response) => (weeks.value = response.data.tasks)
+  );
 });
 </script>
 

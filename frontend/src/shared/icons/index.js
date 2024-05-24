@@ -8,6 +8,7 @@ import CornerIcon from './CornerIcon.vue';
 import CrossIcon from './CrossIcon.vue';
 import EllipsesIcon from './EllipsesIcon.vue';
 import ReloadIcon from './ReloadIcon.vue';
+import RotateIcon from './RotateIcon.vue';
 import TriangleIcon from './TriangleIcon.vue';
 
 export {
@@ -21,5 +22,6 @@ export {
   CrossIcon,
   EllipsesIcon,
   ReloadIcon,
+  RotateIcon,
   TriangleIcon
 };

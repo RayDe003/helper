@@ -2,7 +2,7 @@
   <base-checkbox
     :id="`system-${id}`"
     name="system-task"
-    :value="completed"
+    :value="accept"
     v-model="isChecked"
     :reverse="true"
   >
@@ -20,8 +20,8 @@ const props = defineProps({
     type: [String, Number],
     required: true
   },
-  completed: {
-    type: Boolean,
+  accept: {
+    type: [Number, Boolean],
     default: false
   },
   title: {
@@ -32,10 +32,10 @@ const props = defineProps({
 const emits = defineEmits(['change-status']);
 
 // eslint-disable-next-line vue/require-prop-types
-const isChecked = ref(props.completed);
+const isChecked = ref(!!props.accept);
 
 watch(isChecked, () =>
-  emits('change-status', { id: props.id, status: isChecked.value })
+  emits('change-status', { id: props.id, accept: isChecked.value ? 1 : 0 })
 );
 </script>
 
