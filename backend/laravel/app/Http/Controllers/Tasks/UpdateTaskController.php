@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Tasks;
 
+use App\Exceptions\AccessDeniedException;
+use App\Exceptions\TaskNotFoundException;
 use App\Models\Task;
 use App\Models\UserTask;
 use App\Services\AchievementService;
@@ -21,16 +23,11 @@ class UpdateTaskController extends Controller
 
     public function updateTask(Request $request, Task $task): JsonResponse
     {
-
         $user = Auth::user();
         $userTask = UserTask::where('user_id', $user->id)
             ->where('task_id', $task->id)
             ->first();
-        if (!$userTask) {
-            return response()->json([
-                'error' => 'У вас нет доступа к изменению этой задачи.',
-            ], 403);
-        }
+        throw_unless($userTask, AccessDeniedException::class);
 
         $priorityId = $request->input('priority_id');
         if ($priorityId != null && ($priorityId < 1 || $priorityId > 3)) {

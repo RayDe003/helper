@@ -20,12 +20,6 @@ class CreateTaskController extends Controller
     }
     public function create_task(CreateTaskRequest $request) : JsonResponse
     {
-        if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('tasks_images', 'public');
-        } else {
-            $image = null;
-        }
-
         $deadline = $request->filled('deadline') ? $request->deadline : now();
 
         $task = Task::create([
@@ -33,10 +27,9 @@ class CreateTaskController extends Controller
             'description' => $request->description,
             'deadline' => $deadline,
             'priority_id' => $request->priority_id,
-            'file' => $image
         ]);
 
-        $userTask = UserTask::create([
+       UserTask::create([
             'user_id' => auth()->user()->id,
             'task_id' => $task->id,
         ]);

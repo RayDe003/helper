@@ -19,14 +19,13 @@ class ForDayController extends Controller
         $date = $request->input('date', Carbon::today()->toDateString());
 
         $tasks = Task::whereDate('deadline', $date)
+            ->whereHas('userTask', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
             ->with('subTasks')
             ->get();
 
-        $tasksWithStatuses = $tasks->map(function ($task) use ($user) {
-            $userTask = UserTask::where('user_id', $user->id)
-                ->where('task_id', $task->id)
-                ->first();
-
+        $tasksWithStatuses = $tasks->map(function ($task) {
             return new TaskResource($task);
         });
 

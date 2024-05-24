@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Tasks;
 
+use App\Exceptions\AccessDeniedException;
+use App\Exceptions\TaskNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\UserTask;
@@ -21,21 +23,30 @@ class CompleteTaskController extends Controller
     public function updateStatus(Task $task): JsonResponse
     {
         $user = Auth::user();
-        if (!$user) {
-            return response()->json(['message' => 'Пользователь не аутентифицирован'], 401);
-        }
 
         $userTask = UserTask::where('user_id', $user->id)
             ->where('task_id', $task->id)
             ->first();
 
-        if (!$userTask) {
-            return response()->json(['message' => 'Задача не найдена для текущего пользователя'], 404);
-        }
+        throw_unless($userTask, AccessDeniedException::class);
 
+        $this->markTaskComplete($userTask);
+        $this->updateAchievements($user, $task);
+
+        return response()->json([
+            'message' => 'Статус задачи успешно обновлен!',
+            'user_task' => $userTask,
+        ]);
+    }
+
+    protected function markTaskComplete(UserTask $userTask)
+    {
         $userTask->is_complete = true;
         $userTask->save();
+    }
 
+    protected function updateAchievements($user, Task $task)
+    {
         switch ($task->priority_id) {
             case '3':
                 $this->achievementService->updateAchievements($user, 'high_priority_tasks');
@@ -50,20 +61,18 @@ class CompleteTaskController extends Controller
 
         $this->achievementService->updateAchievements($user, 'any_tasks');
 
-        $tasksCompletedThisWeek = $user->tasks()->whereDate('created_at', '>', now()->subWeek())->exists();
-        if ($tasksCompletedThisWeek) {
+        if ($this->tasksCompletedWithin($user, now()->subWeek())) {
             $this->achievementService->updateAchievements($user, 'daily_tasks_week');
         }
 
-        $tasksCompletedThisMonth = $user->tasks()->whereDate('created_at', '>', now()->subMonth())->exists();
-        if ($tasksCompletedThisMonth) {
+        if ($this->tasksCompletedWithin($user, now()->subMonth())) {
             $this->achievementService->updateAchievements($user, 'daily_tasks_month');
         }
-
-
-        return response()->json([
-            'message' => 'Статус задачи успешно обновлен!',
-            'user_task' => $userTask,
-        ]);
     }
+
+    protected function tasksCompletedWithin($user, $timePeriod)
+    {
+        return $user->tasks()->whereDate('created_at', '>', $timePeriod)->exists();
+    }
+
 }

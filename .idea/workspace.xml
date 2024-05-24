@@ -4,28 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="ачивки готовы юхууууу">
-      <change afterPath="$PROJECT_DIR$/backend/laravel/_docker/app/supervisor.ini" afterDir="false" />
+    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="Костя  мощный капец уведы автоматические  вау">
+      <change afterPath="$PROJECT_DIR$/backend/laravel/app/Exceptions/UnauthenticatedUserException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/_docker/app/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/_docker/app/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/_docker/app/crontab.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/_docker/app/crontab.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendDailyNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendDailyNotifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendWeeklyNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendWeeklyNotifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/User/UserRegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/User/UserRegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Resources/TaskResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Resources/TaskResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Models/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Notifications/TaskReminderNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Notifications/TaskReminderNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Exceptions/NotYourTaskException.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Exceptions/AccessDeniedException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Notifications/AddNotificationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Notifications/AddNotificationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SubTasks/CompleteSubTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SubTasks/CompleteSubTask.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SubTasks/CreateSubTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SubTasks/CreateSubTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SubTasks/DeleteSubTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SubTasks/DeleteSubTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SubTasks/UpdateSubTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SubTasks/UpdateSubTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SystemTasks/AcceptSystemTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/SystemTasks/AcceptSystemTask.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/CompleteTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/CompleteTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/CreateTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/CreateTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/DeleteTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/DeleteTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/FileUploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/FileUploadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/ForDayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/ForDayController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/ForMonthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/ForMonthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/GetOneTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/GetOneTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/UpdateTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Controllers/Tasks/UpdateTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Http/Requests/CreateTaskRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Http/Requests/CreateTaskRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/bootstrap/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/routes/console.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/supervisord.log" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/supervisord.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo32" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo33" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo34" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo35" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo36" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo37" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo37" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" afterDir="false" />
@@ -37,15 +39,11 @@
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000035" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000035" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/cache_locks.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/cache_locks.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/failed_jobs.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/failed_jobs.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/jobs.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/jobs.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/notifications.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/notifications.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/personal_access_tokens.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/personal_access_tokens.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/random_tasks.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/random_tasks.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/sub_tasks.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/sub_tasks.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/task.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/task.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users_achievements.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users_achievements.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users_system_tasks.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users_system_tasks.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users_tasks.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users_tasks.ibd" afterDir="false" />
@@ -285,7 +283,7 @@
       <workItem from="1714966245144" duration="48084000" />
       <workItem from="1715169346438" duration="41000" />
       <workItem from="1715571674425" duration="73068000" />
-      <workItem from="1716181406562" duration="78571000" />
+      <workItem from="1716181406562" duration="102048000" />
     </task>
     <task id="LOCAL-00001" summary="ы">
       <option name="closed" value="true" />
@@ -423,7 +421,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716367852941</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Костя  мощный капец уведы автоматические  вау">
+      <option name="closed" value="true" />
+      <created>1716463137698</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716463137698</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,6 +464,7 @@
     <MESSAGE value="ну, получается системные  норм  работают" />
     <MESSAGE value="ну типо сидеры вау класс" />
     <MESSAGE value="ачивки готовы юхууууу" />
-    <option name="LAST_COMMIT_MESSAGE" value="ачивки готовы юхууууу" />
+    <MESSAGE value="Костя  мощный капец уведы автоматические  вау" />
+    <option name="LAST_COMMIT_MESSAGE" value="Костя  мощный капец уведы автоматические  вау" />
   </component>
 </project>

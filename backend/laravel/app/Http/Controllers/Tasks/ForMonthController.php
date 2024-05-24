@@ -32,7 +32,6 @@ class ForMonthController extends Controller
             ->values()
             ->toArray();
 
-        // Создаем массив дней месяца с пометкой о наличии или отсутствии задач
         $startOfMonth = Carbon::create($year, $month, 1);
         $endOfMonth = $startOfMonth->copy()->endOfMonth();
         $allDaysOfMonth = [];

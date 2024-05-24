@@ -15,5 +15,13 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->render( function ( \Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e) {
+            throw new \App\Exceptions\NotFoundException();
+        });
+        $exceptions->render( function ( \Illuminate\Auth\AuthenticationException $e) {
+            throw new \App\Exceptions\UnauthenticatedUserException();
+        });
+        $exceptions->render( function ( \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException $e) {
+            throw new \App\Exceptions\AccessDeniedException();
+        });
     })->create();

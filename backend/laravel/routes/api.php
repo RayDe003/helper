@@ -48,7 +48,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/tasks', [AllUsersTasksController::class, 'getUserTasks']);
     Route::get('/users/one_task/{task}',[GetOneTaskController::class, 'getTask']);
     Route::patch('/users/update_task/{task}', [UpdateTaskController::class, 'updateTask']);
-    Route::delete('/users/delete_task/{userTask}', [DeleteTaskController::class, 'deleteTask']);
+    Route::delete('/users/delete_task/{task}', [DeleteTaskController::class, 'deleteTask']);
     Route::patch('/tasks/{task}/complete', [CompleteTaskController::class, 'updateStatus']);
 
     Route::get('/tasks/for_two_weeks', [ForTwoWeeksController::class, "getTwoWeeks"]);
@@ -58,12 +58,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/tasks/{task}/notification', [AddNotificationsController::class, 'setNotifications']);
     Route::patch('/tasks/{task}/notification_change', [UpdateNotificationsController::class, 'updateNotifications']);
 
-    Route::patch('/subtasks/{sub_task}/complete', [CompleteSubTask::class, 'updateStatus']);
-
     Route::post('/tasks/{task}/subtasks', [CreateSubTaskController::class, 'create_sub_task']);
     Route::patch('/tasks/{task}/subtasks/{sub_task}', [UpdateSubTaskController::class, 'updateSubTask']);
     Route::get('/tasks/{task}/subtasks', [AllSubTasksController::class, 'getSubTasks']);
     Route::delete('/tasks/{task}/delete_sub_task/{sub_task}', [DeleteSubTaskController::class, "deleteSubTask"]);
+    Route::patch('/tasks/{task}/complete/{sub_task}', [CompleteSubTask::class, 'updateStatus']);
 
     Route::get('/system_tasks', [AllSystemTasks::class, 'getAllTasks']);
     Route::patch('system_tasks/{id}/accept', [AcceptSystemTask::class, 'updateAccept']);

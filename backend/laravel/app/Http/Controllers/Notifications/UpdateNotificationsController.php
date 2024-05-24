@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Notifications;
 
+use App\Exceptions\AccessDeniedException;
 use App\Models\Notifications;
 use App\Models\Task;
+use App\Models\UserTask;
 use App\Services\AchievementService;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
@@ -21,6 +23,11 @@ class UpdateNotificationsController extends Controller
     public function updateNotifications(Request $request, Task $task): JsonResponse
     {
         $user = Auth::user();
+        $userTask = UserTask::where('user_id', $user->id)
+            ->where('task_id', $task->id)
+            ->first();
+
+        throw_unless($userTask, AccessDeniedException::class);
         $notification = Notifications::where('task_id', $task->id)->first();
 
         if (!$notification) {

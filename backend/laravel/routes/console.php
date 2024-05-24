@@ -8,6 +8,4 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
-Schedule::command('notifications:send-daily')->everyTenSeconds()->after(function () {
-    \Illuminate\Support\Facades\Log::info('looooh');
-});
+Schedule::command('notifications:send-daily')->dailyAt('06:00');

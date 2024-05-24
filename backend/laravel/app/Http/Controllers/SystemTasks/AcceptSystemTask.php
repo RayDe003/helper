@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\SystemTasks;
 
+use App\Exceptions\AccessDeniedException;
+use App\Exceptions\NotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\UsersSystemTask;
 use Illuminate\Http\JsonResponse;
@@ -19,7 +21,7 @@ class AcceptSystemTask extends Controller
             ->first();
 
         if (!$userSystemTask) {
-            return response()->json(['message' => 'Задача не найдена или нет доступа'], 404);
+            throw_unless($userSystemTask, NotFoundException::class);
         }
 
         $userSystemTask->accept = $request->input('accept');

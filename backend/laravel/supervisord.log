@@ -198,3 +198,137 @@
 2024-05-23 11:18:35,131 WARN stopped: laravel-scheduler (terminated by SIGTERM)
 2024-05-23 11:18:35,132 WARN stopped: cron (terminated by SIGTERM)
 2024-05-23 11:18:35,139 INFO stopped: php-fpm (exit status 0)
+2024-05-24 04:28:21,512 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-24 04:28:21,516 INFO supervisord started with pid 1
+2024-05-24 04:28:22,519 INFO spawned: 'php-fpm' with pid 7
+2024-05-24 04:28:22,523 INFO spawned: 'cron' with pid 8
+2024-05-24 04:28:22,532 INFO spawned: 'laravel-scheduler' with pid 9
+2024-05-24 04:28:22,539 INFO spawned: 'laravel-worker_00' with pid 10
+2024-05-24 04:28:22,544 INFO spawned: 'laravel-worker_01' with pid 11
+2024-05-24 04:28:22,555 INFO spawned: 'laravel-worker_02' with pid 12
+2024-05-24 04:28:23,601 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 04:28:23,602 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 04:28:23,602 INFO success: laravel-scheduler entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 04:28:23,603 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 04:28:23,603 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 04:28:23,604 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 04:29:01,572 INFO reaped unknown pid 34 (exit status 0)
+2024-05-24 04:30:02,495 INFO reaped unknown pid 65 (exit status 0)
+2024-05-24 04:30:05,310 INFO reaped unknown pid 64 (exit status 0)
+2024-05-24 04:31:01,645 INFO reaped unknown pid 97 (exit status 0)
+2024-05-24 04:32:02,297 INFO reaped unknown pid 127 (exit status 0)
+2024-05-24 04:33:02,341 INFO reaped unknown pid 157 (exit status 0)
+2024-05-24 04:33:22,294 WARN received SIGQUIT indicating exit request
+2024-05-24 04:33:22,295 INFO waiting for php-fpm, cron, laravel-scheduler, laravel-worker_00, laravel-worker_01, laravel-worker_02 to die
+2024-05-24 04:33:23,300 WARN stopped: laravel-worker_00 (terminated by SIGTERM)
+2024-05-24 04:33:23,300 WARN stopped: laravel-worker_01 (terminated by SIGTERM)
+2024-05-24 04:33:23,301 WARN stopped: laravel-worker_02 (terminated by SIGTERM)
+2024-05-24 04:33:24,305 WARN stopped: laravel-scheduler (terminated by SIGTERM)
+2024-05-24 04:33:24,306 WARN stopped: cron (terminated by SIGTERM)
+2024-05-24 04:33:24,311 INFO stopped: php-fpm (exit status 0)
+2024-05-24 05:34:21,396 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-24 05:34:21,403 INFO supervisord started with pid 1
+2024-05-24 05:34:22,406 INFO spawned: 'php-fpm' with pid 7
+2024-05-24 05:34:22,409 INFO spawned: 'cron' with pid 8
+2024-05-24 05:34:22,414 INFO spawned: 'laravel-scheduler' with pid 9
+2024-05-24 05:34:22,423 INFO spawned: 'laravel-worker_00' with pid 10
+2024-05-24 05:34:22,427 INFO spawned: 'laravel-worker_01' with pid 11
+2024-05-24 05:34:22,438 INFO spawned: 'laravel-worker_02' with pid 12
+2024-05-24 05:34:23,530 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:34:23,531 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:34:23,532 INFO success: laravel-scheduler entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:34:23,533 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:34:23,533 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:34:23,534 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:35:02,454 INFO reaped unknown pid 34 (exit status 0)
+2024-05-24 05:35:30,623 WARN received SIGQUIT indicating exit request
+2024-05-24 05:35:30,624 INFO waiting for php-fpm, cron, laravel-scheduler, laravel-worker_00, laravel-worker_01, laravel-worker_02 to die
+2024-05-24 05:35:31,627 WARN stopped: laravel-worker_00 (terminated by SIGTERM)
+2024-05-24 05:35:31,627 WARN stopped: laravel-worker_01 (terminated by SIGTERM)
+2024-05-24 05:35:31,628 WARN stopped: laravel-worker_02 (terminated by SIGTERM)
+2024-05-24 05:35:32,633 WARN stopped: laravel-scheduler (terminated by SIGTERM)
+2024-05-24 05:35:32,634 WARN stopped: cron (terminated by SIGTERM)
+2024-05-24 05:35:32,639 INFO stopped: php-fpm (exit status 0)
+2024-05-24 05:35:57,332 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-24 05:35:57,338 INFO supervisord started with pid 1
+2024-05-24 05:35:58,340 INFO spawned: 'php-fpm' with pid 7
+2024-05-24 05:35:58,343 INFO spawned: 'cron' with pid 8
+2024-05-24 05:35:58,348 INFO spawned: 'laravel-scheduler' with pid 9
+2024-05-24 05:35:58,356 INFO spawned: 'laravel-worker_00' with pid 10
+2024-05-24 05:35:58,360 INFO spawned: 'laravel-worker_01' with pid 11
+2024-05-24 05:35:58,363 INFO spawned: 'laravel-worker_02' with pid 12
+2024-05-24 05:35:59,404 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:35:59,405 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:35:59,405 INFO success: laravel-scheduler entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:35:59,407 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:35:59,408 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:35:59,409 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 05:36:01,411 INFO reaped unknown pid 18 (exit status 0)
+2024-05-24 05:37:01,580 INFO reaped unknown pid 40 (exit status 0)
+2024-05-24 05:38:01,890 INFO reaped unknown pid 50 (exit status 0)
+2024-05-24 05:39:02,098 INFO reaped unknown pid 60 (exit status 0)
+2024-05-24 05:40:01,612 INFO reaped unknown pid 72 (exit status 0)
+2024-05-24 05:41:02,532 INFO reaped unknown pid 82 (exit status 0)
+2024-05-24 05:42:02,530 INFO reaped unknown pid 92 (exit status 0)
+2024-05-24 05:43:01,824 INFO reaped unknown pid 102 (exit status 0)
+2024-05-24 05:44:01,765 INFO reaped unknown pid 112 (exit status 0)
+2024-05-24 05:45:01,755 INFO reaped unknown pid 127 (exit status 0)
+2024-05-24 05:45:04,758 INFO reaped unknown pid 126 (exit status 0)
+2024-05-24 05:46:01,749 INFO reaped unknown pid 139 (exit status 0)
+2024-05-24 05:47:02,736 INFO reaped unknown pid 149 (exit status 0)
+2024-05-24 05:48:02,711 INFO reaped unknown pid 159 (exit status 0)
+2024-05-24 05:49:02,696 INFO reaped unknown pid 169 (exit status 0)
+2024-05-24 05:50:02,781 INFO reaped unknown pid 179 (exit status 0)
+2024-05-24 05:51:01,954 INFO reaped unknown pid 189 (exit status 0)
+2024-05-24 05:52:02,725 INFO reaped unknown pid 199 (exit status 0)
+2024-05-24 05:53:02,708 INFO reaped unknown pid 209 (exit status 0)
+2024-05-24 05:54:02,790 INFO reaped unknown pid 219 (exit status 0)
+2024-05-24 05:55:02,646 INFO reaped unknown pid 229 (exit status 0)
+2024-05-24 05:56:02,021 INFO reaped unknown pid 239 (exit status 0)
+2024-05-24 05:57:01,544 INFO reaped unknown pid 249 (exit status 0)
+2024-05-24 05:58:01,851 INFO reaped unknown pid 259 (exit status 0)
+2024-05-24 05:59:01,731 INFO reaped unknown pid 269 (exit status 0)
+2024-05-24 06:00:01,272 INFO reaped unknown pid 290 (exit status 0)
+2024-05-24 06:00:04,276 INFO reaped unknown pid 289 (exit status 0)
+2024-05-24 06:00:07,603 INFO reaped unknown pid 293 (exit status 0)
+2024-05-24 06:01:01,874 INFO reaped unknown pid 309 (exit status 0)
+2024-05-24 06:02:01,841 INFO reaped unknown pid 319 (exit status 0)
+2024-05-24 06:03:01,732 INFO reaped unknown pid 329 (exit status 0)
+2024-05-24 06:04:02,103 INFO reaped unknown pid 339 (exit status 0)
+2024-05-24 06:05:01,887 INFO reaped unknown pid 349 (exit status 0)
+2024-05-24 06:06:01,590 INFO reaped unknown pid 361 (exit status 0)
+2024-05-24 06:07:01,778 INFO reaped unknown pid 371 (exit status 0)
+2024-05-24 06:08:02,179 INFO reaped unknown pid 385 (exit status 0)
+2024-05-24 06:09:01,642 INFO reaped unknown pid 395 (exit status 0)
+2024-05-24 06:10:01,846 INFO reaped unknown pid 405 (exit status 0)
+2024-05-24 06:11:01,938 INFO reaped unknown pid 415 (exit status 0)
+2024-05-24 06:12:01,720 INFO reaped unknown pid 425 (exit status 0)
+2024-05-24 06:13:02,553 INFO reaped unknown pid 435 (exit status 0)
+2024-05-24 06:14:01,942 INFO reaped unknown pid 445 (exit status 0)
+2024-05-24 06:15:02,725 INFO reaped unknown pid 459 (exit status 0)
+2024-05-24 06:15:05,639 INFO reaped unknown pid 460 (exit status 0)
+2024-05-24 06:16:02,708 INFO reaped unknown pid 472 (exit status 0)
+2024-05-24 06:16:30,847 WARN received SIGQUIT indicating exit request
+2024-05-24 06:16:30,864 INFO waiting for php-fpm, cron, laravel-scheduler, laravel-worker_00, laravel-worker_01, laravel-worker_02 to die
+2024-05-24 06:16:30,877 WARN stopped: laravel-worker_01 (terminated by SIGTERM)
+2024-05-24 06:16:30,880 WARN stopped: laravel-worker_00 (terminated by SIGTERM)
+2024-05-24 06:16:30,882 WARN stopped: laravel-worker_02 (terminated by SIGTERM)
+2024-05-24 06:16:31,890 WARN stopped: laravel-scheduler (terminated by SIGTERM)
+2024-05-24 06:16:31,892 WARN stopped: cron (terminated by SIGTERM)
+2024-05-24 06:16:31,913 INFO stopped: php-fpm (exit status 0)
+2024-05-24 06:16:57,489 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-05-24 06:16:57,494 INFO supervisord started with pid 1
+2024-05-24 06:16:58,497 INFO spawned: 'php-fpm' with pid 7
+2024-05-24 06:16:58,500 INFO spawned: 'cron' with pid 8
+2024-05-24 06:16:58,506 INFO spawned: 'laravel-scheduler' with pid 9
+2024-05-24 06:16:58,510 INFO spawned: 'laravel-worker_00' with pid 10
+2024-05-24 06:16:58,514 INFO spawned: 'laravel-worker_01' with pid 11
+2024-05-24 06:16:58,517 INFO spawned: 'laravel-worker_02' with pid 12
+2024-05-24 06:16:59,581 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 06:16:59,581 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 06:16:59,581 INFO success: laravel-scheduler entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 06:16:59,582 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 06:16:59,582 INFO success: laravel-worker_01 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 06:16:59,583 INFO success: laravel-worker_02 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-05-24 06:17:01,585 INFO reaped unknown pid 21 (exit status 0)
+2024-05-24 06:18:02,510 INFO reaped unknown pid 43 (exit status 0)

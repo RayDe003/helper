@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\SubTasks;
 
+use App\Exceptions\AccessDeniedException;
 use App\Http\Requests\CreateSubTaskRequest;
 use App\Models\SubTask;
 use App\Models\Task;
+use App\Models\UserTask;
 use App\Services\AchievementService;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
@@ -20,6 +22,15 @@ class CreateSubTaskController extends Controller
     }
     public function create_sub_task(CreateSubTaskRequest $request, Task $task) : JsonResponse
     {
+
+        $user = Auth::user();
+
+        $userTask = UserTask::where('user_id', $user->id)
+            ->where('task_id', $task->id)
+            ->first();
+
+        throw_unless($userTask, AccessDeniedException::class);
+
         $subTask = SubTask::create([
             'text' => $request->text,
             'task_id' => $task->id,
@@ -30,7 +41,6 @@ class CreateSubTaskController extends Controller
             $user = Auth::user();
             $this->achievementService->updateAchievements($user, 'create_checklist', 1);
         }
-
 
         return response()->json([
             'message' => 'Подзадача успешно создана!',

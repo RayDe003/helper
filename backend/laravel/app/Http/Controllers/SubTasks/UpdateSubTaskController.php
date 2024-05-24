@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\SubTasks;
 
+use App\Exceptions\AccessDeniedException;
+use App\Exceptions\TaskNotFoundException;
 use App\Models\SubTask;
 use App\Models\Task;
 use Illuminate\Http\JsonResponse;
@@ -14,15 +16,11 @@ class UpdateSubTaskController extends Controller
     public function updateSubTask(Request $request, Task $task,  SubTask $sub_task,) : JsonResponse
     {
         if (!$sub_task->task->users->contains(auth()->user()->id)) {
-            return response()->json([
-                'error' => 'нет уйди.',
-            ], 403);
+            throw new AccessDeniedException ;
         }
 
         if(!$sub_task->task() === $task){
-            return response()->json([
-                'error' => 'не та  задача.',
-            ], 403);
+            throw new TaskNotFoundException ;
         }
 
         $sub_task->update([

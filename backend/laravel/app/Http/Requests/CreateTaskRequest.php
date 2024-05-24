@@ -25,7 +25,7 @@ class CreateTaskRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'image' => 'file|min:1|max:4096'
+//            'image' => 'file|min:1|max:4096',
         ];
     }
 }

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Tasks;
 
+use App\Exceptions\AccessDeniedException;
+use App\Exceptions\TaskNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
+use App\Models\UserTask;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,6 +16,14 @@ class FileUploadController extends Controller
 {
     public function upload(Request $request, Task $task)
     {
+        $user = Auth::user();
+
+        $userTask = UserTask::where('user_id', $user->id)
+            ->where('task_id', $task->id)
+            ->first();
+
+        throw_unless($userTask, AccessDeniedException::class);
+
         $validator = Validator::make($request->all(), [
             'file' => 'required|file|max:10240',
         ]);
@@ -35,6 +47,15 @@ class FileUploadController extends Controller
 
     public function download(Task $task)
     {
+        $user = Auth::user();
+
+        $userTask = UserTask::where('user_id', $user->id)
+            ->where('task_id', $task->id)
+            ->first();
+
+        throw_unless($userTask, AccessDeniedException::class);
+
+
         if ($task->file && Storage::disk('public')->exists($task->file)) {
             return response()->download(storage_path('app/public/' . $task->file));
         }
