@@ -19,7 +19,7 @@ class ForTwoWeeksController extends Controller
 
         $tasks = $this->getUserTasks($user->id, $currentDate, $twoWeeksLater);
 
-        $tasksByDate = $this->groupTasksByDate($tasks);
+        $tasksByDate = $this->groupTasksByDate($tasks, $currentDate, $twoWeeksLater);
 
         return response()->json([
             'tasks' => $tasksByDate,
@@ -39,15 +39,29 @@ class ForTwoWeeksController extends Controller
             });
     }
 
-    private function groupTasksByDate($tasks)
+    private function groupTasksByDate($tasks, $startDate, $endDate)
     {
-        return $tasks->groupBy(function ($userTask) {
+        $dates = collect();
+        for ($date = $startDate->copy(); $date->lte($endDate); $date->addDay()) {
+            $dates->put($date->toDateString(), [
+                'date' => $date->toDateString(),
+                'tasks' => []
+            ]);
+        }
+
+        $tasksByDate = $tasks->groupBy(function ($userTask) {
             return Carbon::parse($userTask->task->deadline)->toDateString();
-        })->map(function ($tasks, $date) {
-            return [
-                'date' => $date,
-                'tasks' => TaskResource::collection($tasks->pluck('task')),
-            ];
-        })->values()->all();
+        });
+
+        $tasksByDate->each(function ($tasks, $date) use ($dates) {
+            $dates->transform(function ($item) use ($tasks, $date) {
+                if ($item['date'] == $date) {
+                    $item['tasks'] = TaskResource::collection($tasks->pluck('task'));
+                }
+                return $item;
+            });
+        });
+
+        return $dates->values()->all();
     }
 }

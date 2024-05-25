@@ -69,7 +69,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('system_tasks/random', [GetTenTasks::class, "getRandomTasks"]);
     Route::post('system_tasks/rerandom', [RarandomOneTask::class, 'rerandomTask']);
     Route::get('system_tasks/today', [RandomTasksForToday::class, 'randomTasksForToday']);
-    Route::delete('system_tasks/delete', [DeleteRandomTask::class, 'deleteRandomTask']);
+    Route::delete('system_tasks/{id}/delete', [DeleteRandomTask::class, 'deleteRandomTask']);
     Route::patch('system_tasks/complete', [RandomTasksForToday::class, 'completeRandomTask']);
 
     Route::get('/achievements', [AllAchievementsController::class, 'getAllAchievements']);
