@@ -5,6 +5,7 @@
       :key="index"
       :date="day.date"
       :tasks="day.tasks"
+      @refresh-tasks="getWeeksTasks"
     />
   </section>
 </template>
@@ -18,11 +19,13 @@ import PlansCard from './PlansCard.vue';
 
 const weeks = ref([]);
 
-onMounted(() => {
+const getWeeksTasks = () => {
   getWeeksTasksRequest().then(
     (response) => (weeks.value = response.data.tasks)
   );
-});
+};
+
+onMounted(getWeeksTasks);
 </script>
 
 <style scoped lang="scss">

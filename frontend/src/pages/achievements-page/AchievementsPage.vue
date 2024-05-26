@@ -43,6 +43,8 @@ onMounted(() =>
   }
 
   &__list {
+    height: 80dvh;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     gap: 20px;

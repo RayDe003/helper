@@ -2,12 +2,12 @@
   <section class="subtask-list">
     <plan-subtask
       v-for="subTask in subTasks"
-      :key="`sub-${subTask.task_id}`"
-      :id="`sub-${subTask.task_id}`"
+      :key="`sub-${subTask.id}`"
+      :id="`sub-${subTask.id}`"
       :is_complete="subTask.is_complete"
-      @complete-subtask="emit('complete-subtask', subTask.task_id)"
+      @complete-subtask="emit('complete-subtask', subTask.id)"
     >
-      {{ mode ? subTask.name : trimText(subTask.name, 11) }}
+      {{ mode ? subTask.text : trimText(subTask.text, 11) }}
     </plan-subtask>
   </section>
 </template>

@@ -43,12 +43,10 @@ import { useAuthUser } from '@/stores';
 const showedSettings = ref(false);
 const showSettings = () => {
   showedSettings.value = true;
-  console.log(showedSettings.value);
 };
 
 const hideSettings = () => {
   showedSettings.value = false;
-  console.log(showedSettings.value);
 };
 
 const router = useRouter();

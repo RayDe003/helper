@@ -49,13 +49,13 @@
       </p>
       <section class="settings-subtasks__list" :key="rerenderSubsKey">
         <input
-          v-for="(child, ind) in children"
-          :key="child.task_id"
-          v-model="child.title"
+          v-for="(child, ind) in sub_tasks"
+          :key="child.id"
+          v-model="child.text"
           class="settings-input"
           type="text"
-          @change="inputData('children', ind)"
-          @keyup.enter="submitSettings('children', ind)"
+          @change="inputData('sub_tasks', ind)"
+          @keyup.enter="submitSettings('sub_tasks', ind)"
         />
       </section>
     </div>
@@ -73,6 +73,7 @@
 import { intlFormat, isToday } from 'date-fns';
 import { computed, reactive, ref } from 'vue';
 
+import { createSubTaskRequest, patchSubTaskRequest } from '@/api/index.js';
 import { CalendarIcon, CheckListIcon, CrossIcon, DropSelect } from '@/shared';
 
 const props = defineProps({
@@ -83,9 +84,13 @@ const props = defineProps({
     type: [Date, String],
     default: null
   },
-  children: {
+  sub_tasks: {
     type: Array,
     default: () => []
+  },
+  isNewTask: {
+    type: Boolean,
+    default: false
   },
   priority_id: { type: Number, default: null }
 });
@@ -115,7 +120,7 @@ const settingsData = reactive({
   title: props.title,
   description: props.description,
   deadline: props.deadline,
-  // children: props.children,
+  sub_tasks: props.sub_tasks,
   priority_id: props.priority_id
 });
 
@@ -148,8 +153,16 @@ const inputData = (settingName, index = null) => {
         break;
     }
   }
-  if (index !== null && !settingsData.children[index]?.title) {
-    settingsData.children[index].title = 'Подзадача';
+
+  if (index !== null) {
+    if (!settingsData.sub_tasks[index]?.text) {
+      settingsData.sub_tasks[index].text = 'Подзадача';
+    }
+    if (!props.isNewTask) {
+      patchSubTaskRequest(props.id, settingsData.sub_tasks[index].id, {
+        text: settingsData.sub_tasks[index].text
+      });
+    }
   }
 };
 
@@ -157,11 +170,15 @@ const rerenderSubsKey = ref(1);
 
 const addSubtask = () => {
   rerenderSubsKey.value++;
-  settingsData.children.push({
-    task_id: `new-sub-${settingsData.children.length}`,
-    is_complete: false,
-    title: 'Подзадача'
+  settingsData.sub_tasks.push({
+    id: `new-sub-${settingsData.sub_tasks.length}`,
+    text: 'Подзадача'
   });
+  !props.isNewTask
+    ? createSubTaskRequest(props.id, {
+        text: 'Подзадача'
+      })
+    : null;
 };
 
 const submitSettings = (triggerName = null, ind = null) => {

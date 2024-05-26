@@ -19,13 +19,13 @@
         <corner-icon
           class="task-checkbox__icon"
           :class="{ 'task-checkbox__icon_rotate': showedSubtasks }"
-          v-if="children.length"
+          v-if="sub_tasks.length"
           @click="showSubtasks"
         />
       </p>
       <subtask-list
         :mode="mode"
-        :sub-tasks="children"
+        :sub-tasks="sub_tasks"
         class="task-sub"
         v-if="showedSubtasks"
         @complete-subtask="completeSubtask"
@@ -35,9 +35,10 @@
       :id="id"
       :title="title"
       :description="description"
-      :children="children"
+      :sub_tasks="sub_tasks"
       :priority_id="priority_id"
       :deadline="deadline"
+      :is-new-task="isNewTask"
       @change-task="changeTask"
       v-else
     />
@@ -77,7 +78,7 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  children: {
+  sub_tasks: {
     type: Array,
     default: () => []
   },
@@ -127,7 +128,8 @@ const changeTask = (data) => {
   emit('change-task', data);
 };
 
-const completeSubtask = (id) => emit('complete-subtask', [props.id, id]);
+const completeSubtask = (id) =>
+  emit('complete-subtask', { taskId: props.id, subTaskId: id });
 
 watch(isChecked, () => {
   if (isChecked.value === true) {

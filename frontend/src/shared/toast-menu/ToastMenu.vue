@@ -21,7 +21,7 @@
       >
         Перерандомить задачу
       </li>
-      <li class="toast-menu__item" @click="emit('delete-task')">Удалить</li>
+      <li class="toast-menu__item" @click="deleteTask">Удалить</li>
     </menu>
   </div>
 </template>
@@ -53,6 +53,11 @@ const showSettings = () => {
 
 const randomizeTask = () => {
   emit('randomize-task');
+  showMenu();
+};
+
+const deleteTask = () => {
+  emit('delete-task');
   showMenu();
 };
 

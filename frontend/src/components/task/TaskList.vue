@@ -7,7 +7,7 @@
       :title="task.title"
       :description="task.description"
       :is_complete="task.is_complete"
-      :children="task.sub_tasks"
+      :sub_tasks="task.sub_tasks"
       :priority_id="task.priority_id"
       :deadline="task.deadline"
       :reverse="reverse"

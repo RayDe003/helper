@@ -6,6 +6,7 @@
         :tasks="props.tasks"
         @delete-task="deleteTask"
         @complete-task="completeTask"
+        @complete-subtask="completeSubtask"
       />
     </section>
     <purple-button icon="arrow" @click="seeMore">Подробнее</purple-button>
@@ -16,7 +17,11 @@
 import { getDate, getMonth, getYear } from 'date-fns';
 import { useRouter } from 'vue-router';
 
-import { completeTaskRequest, deleteTaskRequest } from '@/api';
+import {
+  completeSubTaskRequest,
+  completeTaskRequest,
+  deleteTaskRequest
+} from '@/api';
 import { TaskList } from '@/components';
 import { LocalTime, PurpleButton } from '@/shared';
 
@@ -24,6 +29,8 @@ const props = defineProps({
   date: { type: [Date, String], default: new Date() },
   tasks: { type: Array, default: () => [] }
 });
+
+const emits = defineEmits(['refresh-tasks']);
 
 const router = useRouter();
 
@@ -38,8 +45,11 @@ const seeMore = () => {
   });
 };
 
-const deleteTask = (id) => deleteTaskRequest(id);
+const deleteTask = (id) =>
+  deleteTaskRequest(id).then(() => emits('refresh-tasks'));
 const completeTask = (id) => completeTaskRequest(id);
+
+const completeSubtask = (data) => completeSubTaskRequest(data);
 </script>
 
 <style scoped lang="scss">

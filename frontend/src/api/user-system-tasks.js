@@ -25,7 +25,7 @@ export const acceptSystemTaskRequest = (id, accept) =>
   );
 
 export const deleteSystemTaskRequest = (id) =>
-  axios.delete(apiLink('system_tasks/delete'), { headers: apiHeaders });
+  axios.delete(apiLink(`system_tasks/${id}/delete`), { headers: apiHeaders });
 
 export const completeSystemTaskRequest = (id) =>
   axios.patch(

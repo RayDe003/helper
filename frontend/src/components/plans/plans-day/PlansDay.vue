@@ -36,7 +36,7 @@
       :id="`new-${createdTaskId}`"
       :title="createdTaskData.title"
       :description="createdTaskData.description"
-      :children="createdTaskData.children"
+      :sub_tasks="createdTaskData.sub_tasks"
       :is_complete="createdTaskData.is_complete"
       :priority_id="createdTaskData.priority_id"
       :deadline="createdTaskData.deadline"
@@ -60,9 +60,12 @@ import { computed, onMounted, reactive, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 import {
+  completeSubTaskRequest,
   completeSystemTaskRequest,
   completeTaskRequest,
+  createSubTaskRequest,
   createTaskRequest,
+  deleteSystemTaskRequest,
   deleteTaskRequest,
   getDailySystemTasksRequest,
   getDailyTasksRequest,
@@ -96,48 +99,34 @@ const switchMode = (value) => {
 };
 
 const deleteTask = (id) => {
-  try {
-    initMode.value ? console.log('В разработке') : deleteTaskRequest(id);
-  } finally {
-    getDailyTasks();
-  }
+  initMode.value
+    ? deleteSystemTaskRequest(id).then(() => getDailyTasks())
+    : deleteTaskRequest(id).then(() => getDailyTasks());
 };
 const completeTask = (id) =>
   initMode.value ? completeSystemTaskRequest(id) : completeTaskRequest(id);
 
 const getRandomTasks = () =>
-  getRandomTasksRequest().then(() => getDailyTasks());
+  getRandomTasksRequest().then(
+    (response) => (tasksProcrastination.value = response.data.data)
+  );
 
-const completeSubtask = (data) => {
-  // tasksDiary.value.map((task) => {
-  //   if (
-  //     task.id === data[0] &&
-  //     task.children.find((child) => child.task_id === data[1])
-  //   ) {
-  //     task.children[
-  //       task.children.findIndex((child) => child.task_id === data[1])
-  //     ].completed = true;
-  //   }
-  // });
-};
+const completeSubtask = (data) => completeSubTaskRequest(data);
 const changeTask = (data) => {
   if (newTask.value) {
-    createTaskRequest(data).then((response) =>
-      tasksDaily.value.push(response.data.task)
-    );
+    createTaskRequest(data)
+      .then((response) => {
+        data.sub_tasks.map((sub_task) =>
+          createSubTaskRequest(response.data.task.id, {
+            text: sub_task.text
+          })
+        );
+      })
+      .finally(() => getDailyTasks());
     newTask.value = false;
     return;
   }
-  updateTaskRequest(data.id, data);
-
-  tasksDaily.value.map((task) => {
-    if (task.id === data.id) {
-      task.title = data.title;
-      task.description = data.description;
-      task.priority_id = data.priority_id;
-      task.deadline = data.deadline;
-    }
-  });
+  updateTaskRequest(data.id, data).then(() => getDailyTasks());
 };
 const randomizeTask = (id) =>
   randomizeSystemTaskRequest(id).then(() => getDailyTasks());
@@ -170,16 +159,9 @@ const getDailyTasks = () => {
 watch(paramsDate, () => getDailyTasks());
 watch([tasksDaily, tasksProcrastination], () => {
   refreshKey.value++;
-  if (tasksDaily.value) {
-    createdTaskId.value = tasksDaily.value.length
-      ? tasksDaily.value.at(-1).id + 1
-      : 1;
-  }
 });
 
-onMounted(async () => {
-  await getDailyTasks();
-});
+onMounted(getDailyTasks);
 </script>
 
 <style scoped lang="scss">
