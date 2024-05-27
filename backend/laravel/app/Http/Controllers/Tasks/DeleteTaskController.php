@@ -21,10 +21,8 @@ class DeleteTaskController extends Controller
 
         throw_unless($userTask, AccessDeniedException::class);
 
-//        throw_unless(auth()->user()->id === $userTask->user_id, AccessDeniedException::class);
-//
         $userTask->task->delete();
-//
+
         return response()->json([
             'message' => 'Задача успешно удалена!',
         ]);

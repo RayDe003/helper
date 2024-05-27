@@ -6,18 +6,22 @@ use App\Exceptions\AccessDeniedException;
 use App\Exceptions\TaskNotFoundException;
 use App\Models\SubTask;
 use App\Models\Task;
+use App\Models\UserTask;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateSubTaskController extends Controller
 {
 
     public function updateSubTask(Request $request, Task $task,  SubTask $sub_task,) : JsonResponse
     {
-        if (!$sub_task->task->users->contains(auth()->user()->id)) {
-            throw new AccessDeniedException ;
-        }
+        $user = Auth::user();
+        $userTask = UserTask::where('user_id', $user->id)
+            ->where('task_id', $task->id)
+            ->first();
+        throw_unless($userTask, AccessDeniedException::class);
 
         if(!$sub_task->task() === $task){
             throw new TaskNotFoundException ;

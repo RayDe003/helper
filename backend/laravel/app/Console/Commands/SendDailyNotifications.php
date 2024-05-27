@@ -39,7 +39,6 @@ class SendDailyNotifications extends Command
             foreach ($task->notifications as $notification) {
                 if ($task->deadline >= Carbon::today()) {
                     $user = $task->users()->first()->user()->first();
-                    if ($task instanceof Task) Log::info('ebanat? nahuya ti chitaesh eto??? gay ebaniy');
                     $user->notify(new TaskReminderNotification($task));
                 }
             }

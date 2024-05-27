@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Notifications;
 
 use App\Exceptions\AccessDeniedException;
+use App\Exceptions\TaskNotFoundException;
 use App\Models\Notifications;
 use App\Models\Task;
 use App\Models\UserTask;
@@ -31,7 +32,7 @@ class UpdateNotificationsController extends Controller
         $notification = Notifications::where('task_id', $task->id)->first();
 
         if (!$notification) {
-            return response()->json(['error' => 'Уведомление для задачи не найдено'], 404);
+            throw new TaskNotFoundException ;
         }
 
         $notification->update([

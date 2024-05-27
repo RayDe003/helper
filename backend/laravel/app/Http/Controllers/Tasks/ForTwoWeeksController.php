@@ -15,7 +15,7 @@ class ForTwoWeeksController extends Controller
     {
         $user = Auth::user();
         $currentDate = Carbon::today();
-        $twoWeeksLater = $currentDate->copy()->addWeeks(2);
+        $twoWeeksLater = $currentDate->copy()->addDays(13);
 
         $tasks = $this->getUserTasks($user->id, $currentDate, $twoWeeksLater);
 

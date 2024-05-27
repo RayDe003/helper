@@ -22,8 +22,6 @@ class GetTenTasks extends Controller
     public function getRandomTasks(): JsonResponse
     {
         $user = Auth::user();
-
-        if ($user) {
             $randomTasks = UsersSystemTask::where('user_id', $user->id)
                 ->where('accept', true)
                 ->inRandomOrder()
@@ -68,8 +66,6 @@ class GetTenTasks extends Controller
 
             return RandomTasksResource::collection($latestRandomTasks)->response();
 
-        } else {
-            return response()->json(['message' => 'Пользователь не аутентифицирован'], 401);
-        }
+
     }
 }

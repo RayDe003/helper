@@ -16,9 +16,6 @@ class GetOneTaskController extends Controller
     public function getTask(Task $task): JsonResponse
     {
         $this->authorize('view', $task);
-//        UserTask::where('user_id', $user->id)
-//            ->where('task_id', $task->id)
-//            ->first();
 
         $taskWithSubTasks = new TaskResource($task->load('subTasks'));
 

@@ -12,11 +12,8 @@ class AllSystemTasks extends Controller
     public function getAllTasks(Request $request)
     {
         $user = $request->user();
-        if ($user) {
             $userSystemTasks = UsersSystemTask::where('user_id', $user->id)->get();
             return UserSystemTaskResource::collection($userSystemTasks);
-        } else {
-            return response()->json(['message' => 'Пользователь не аутентифицирован'], 401);
-        }
+
     }
 }

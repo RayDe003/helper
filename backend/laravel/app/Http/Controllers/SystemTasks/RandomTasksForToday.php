@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\SystemTasks;
 
+use App\Exceptions\AccessDeniedException;
+use App\Exceptions\TaskNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RandomTasksResource;
 use App\Models\RandomTasks;
@@ -16,10 +18,6 @@ class RandomTasksForToday extends Controller
     {
         $user = Auth::user();
 
-        if (!$user) {
-            return response()->json(['message' => 'Пользователь не аутентифицирован'], 401);
-        }
-
         $tasksForToday = $this->getTasksForToday($user);
 
         return RandomTasksResource::collection($tasksForToday)->response();
@@ -29,21 +27,17 @@ class RandomTasksForToday extends Controller
     {
         $user = Auth::user();
 
-        if (!$user) {
-            return response()->json(['message' => 'Пользователь не аутентифицирован'], 401);
-        }
-
         $tasksForToday = $this->getTasksForToday($user);
 
         $randomTaskId = $request->input('random_task_id');
         $randomTask = RandomTasks::findOrFail($randomTaskId);
 
         if (!$tasksForToday->contains('id', $randomTaskId)) {
-            return response()->json(['message' => 'Указанная задача не найдена в списке задач на сегодня'], 404);
+            throw new TaskNotFoundException ;
         }
 
         if ($randomTask->userSystemTask->user_id !== $user->id) {
-            return response()->json(['message' => 'Вы не можете выполнить задачу другого пользователя'], 403);
+            throw new AccessDeniedException() ;
         }
 
         $randomTask->is_complete = true;

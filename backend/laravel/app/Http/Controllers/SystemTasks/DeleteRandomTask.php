@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\SystemTasks;
 
+use App\Exceptions\AccessDeniedException;
+use App\Exceptions\TaskNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\RandomTasks;
 use Illuminate\Http\JsonResponse;
@@ -17,7 +19,7 @@ class DeleteRandomTask extends Controller
         $randomTask = RandomTasks::findOrFail($id);
 
         if ($randomTask->userSystemTask->user_id !== $user->id) {
-            return response()->json(['message' => 'Вы не можете удалить задачу другого пользователя'], 403);
+            throw new AccessDeniedException() ;
         }
 
         $randomTask->delete();

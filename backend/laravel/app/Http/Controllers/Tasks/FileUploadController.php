@@ -42,7 +42,7 @@ class FileUploadController extends Controller
             return response()->json(['message' => 'Файл успешно загружен!', 'file_url' => Storage::url($path)], 200);
         }
 
-        return response()->json(['message' => 'Файл не загружен'], 400);
+        throw new TaskNotFoundException ;
     }
 
     public function download(Task $task)
