@@ -37,9 +37,13 @@ class TaskReminderNotification extends Notification
      */
     public function toMail($notifiable): MailMessage
     {
+        $deadlineDate = Carbon::parse($this->task->deadline)->format('Y-m-d');
+        $url = url('/tasks/' . $deadlineDate . '/' . $this->task->id);
+
         return (new MailMessage)
             ->greeting("Привет, $notifiable->login")
             ->line('Напоминание о задаче: ' . $this->task->title)
+            ->action('Просмотреть задачу', $url)
             ->line('Дедлайн задачи: ' . $this->task->deadline);
     }
 }

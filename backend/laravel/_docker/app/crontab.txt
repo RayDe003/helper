@@ -5,3 +5,5 @@
 0       5       1       *       *       run-parts /etc/periodic/monthly
 *       *       *       *       *       php /var/www/artisan notifications:send-daily
 *       *       *       *       *       php /var/www/artisan notifications:send-weekly
+*       *       *       *       *       php /var/www/artisan notifications:deadline-notifications
+*       *       *       *       *       php /var/www/artisan notifications:selected-days
