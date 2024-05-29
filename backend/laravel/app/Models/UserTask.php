@@ -26,9 +26,9 @@ class UserTask extends Model
     {
         return $this->belongsTo(Task::class);
     }
-
-    public function status()
-    {
-        return $this->belongsTo(TaskStatus::class, 'task_status_id');
-    }
+//
+//    public function status()
+//    {
+//        return $this->belongsTo(TaskStatus::class, 'task_status_id');
+//    }
 }

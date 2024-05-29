@@ -36,39 +36,25 @@ class SendDeadlineNotifications extends Command
 
             $today = Carbon::today();
 
-            $monthlyTasks = $tasksWithSystemNotifications->filter(function ($task) use ($today) {
-                return Carbon::parse($task->deadline)->gt($today->copy()->addMonth());
+            // Отправка уведомлений для задач с дедлайном больше месяца
+            $this->sendNotifications($tasksWithSystemNotifications, $today, 'monthly', function ($deadline, $today) {
+                return Carbon::parse($deadline)->gt($today->copy()->addMonth());
             });
-            foreach ($monthlyTasks as $task) {
-                $user = $task->users()->first()->user()->first();
-                $user->notify(new TaskReminderNotification($task));
-            }
 
-            $weeklyTasks = $tasksWithSystemNotifications->filter(function ($task) use ($today) {
-                $deadline = Carbon::parse($task->deadline);
-                return $deadline->lte($today->copy()->addMonth()) && $deadline->gt($today->copy()->addWeeks(2));
+            // Отправка уведомлений для задач с дедлайном от двух недель до месяца
+            $this->sendNotifications($tasksWithSystemNotifications, $today, 'weekly', function ($deadline, $today) {
+                return Carbon::parse($deadline)->lte($today->copy()->addMonth()) && Carbon::parse($deadline)->gt($today->copy()->addWeeks(2));
             });
-            foreach ($weeklyTasks as $task) {
-                $user = $task->users()->first()->user()->first();
-                $user->notify(new TaskReminderNotification($task));
-            }
 
-            $biweeklyTasks = $tasksWithSystemNotifications->filter(function ($task) use ($today) {
-                $deadline = Carbon::parse($task->deadline);
-                return $deadline->lte($today->copy()->addWeeks(2)) && $deadline->gt($today->copy()->addWeek());
+            // Отправка уведомлений для задач с дедлайном от одной до двух недель
+            $this->sendNotifications($tasksWithSystemNotifications, $today, 'biweekly', function ($deadline, $today) {
+                return Carbon::parse($deadline)->lte($today->copy()->addWeeks(2)) && Carbon::parse($deadline)->gt($today->copy()->addWeek());
             });
-            foreach ($biweeklyTasks as $task) {
-                $user = $task->users()->first()->user()->first();
-                $user->notify(new TaskReminderNotification($task));
-            }
 
-            $dailyTasks = $tasksWithSystemNotifications->filter(function ($task) use ($today) {
-                return Carbon::parse($task->deadline)->lte($today->copy()->addWeek());
+            // Отправка уведомлений для задач с дедлайном до одной недели
+            $this->sendNotifications($tasksWithSystemNotifications, $today, 'daily', function ($deadline, $today) {
+                return Carbon::parse($deadline)->lte($today->copy()->addWeek());
             });
-            foreach ($dailyTasks as $task) {
-                $user = $task->users()->first()->user()->first();
-                $user->notify(new TaskReminderNotification($task));
-            }
 
             $this->info('Deadline notifications sent successfully.');
         } catch (\Exception $e) {
@@ -76,4 +62,43 @@ class SendDeadlineNotifications extends Command
             $this->error('Failed to send deadline notifications.');
         }
     }
+
+    private function sendNotifications($tasks, $today, $frequency, $deadlineCondition)
+    {
+        foreach ($tasks as $task) {
+            $deadline = Carbon::parse($task->deadline);
+
+            foreach ($task->notifications as $notification) {
+                if ($deadlineCondition($deadline, $today) && !$this->hasBeenNotifiedRecently($notification, $frequency)) {
+                    $user = $task->users()->first()->user()->first();
+                    $user->notify(new TaskReminderNotification($task));
+                    $this->updateLastNotifiedAt($notification);
+                }
+            }
+        }
+    }
+
+    private function hasBeenNotifiedRecently($notification, $frequency)
+    {
+        $lastNotifiedAt = $notification->last_notified_at;
+        if (!$lastNotifiedAt) {
+            return false;
+        }
+
+        $now = Carbon::now();
+        return match ($frequency) {
+            'monthly' => $lastNotifiedAt->gt($now->subMonth()),
+            'weekly' => $lastNotifiedAt->gt($now->subWeek()),
+            'biweekly' => $lastNotifiedAt->gt($now->subDays(3)),
+            'daily' => $lastNotifiedAt->gt($now->subDay()),
+            default => false,
+        };
+    }
+
+    private function updateLastNotifiedAt($notification)
+    {
+        $notification->last_notified_at = Carbon::now();
+        $notification->save();
+    }
+
 }

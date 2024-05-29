@@ -4,16 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="новое">
+    <list default="true" id="59edebec-9085-4102-83ad-a2c1e24e049c" name="Changes" comment="ЭТО ЧТО КОНЕЦ?????">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/_docker/app/crontab.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/_docker/app/crontab.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendNotificationsSelectedDays.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendNotificationsSelectedDays.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Notifications/TaskReminderNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Notifications/TaskReminderNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendDeadlineNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Console/Commands/SendDeadlineNotifications.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/Accept.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/AchivementStatus.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/app/Models/UserTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/app/Models/UserTask.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/database/seeders/SystemTasksSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/database/seeders/SystemTasksSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/routes/console.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/supervisord.log" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/supervisord.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/supervisord.pid" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#ib_16384_0.dblwr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo38" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo38" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo38" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_redo/#ib_redo39_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_1.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_10.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_2.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_3.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_4.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_5.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_6.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_7.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_8.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/#innodb_temp/temp_9.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000082" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.000082" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/binlog.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/accept.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/accept.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/achievements.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/achievements.ibd" afterDir="false" />
@@ -41,6 +55,7 @@
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users_tasks.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/helper/users_tasks.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/ib_buffer_pool" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/ibdata1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/ibtmp1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/mysql.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/mysql.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/undo_001" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/undo_001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/laravel/tmp/db/undo_002" beforeDir="false" afterPath="$PROJECT_DIR$/backend/laravel/tmp/db/undo_002" afterDir="false" />
@@ -276,7 +291,7 @@
       <workItem from="1715571674425" duration="73068000" />
       <workItem from="1716181406562" duration="104287000" />
       <workItem from="1716784470169" duration="5668000" />
-      <workItem from="1716865322131" duration="16947000" />
+      <workItem from="1716865322131" duration="26258000" />
     </task>
     <task id="LOCAL-00001" summary="ы">
       <option name="closed" value="true" />
@@ -446,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716791544654</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="ЭТО ЧТО КОНЕЦ?????">
+      <option name="closed" value="true" />
+      <created>1716890811053</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1716890811053</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,6 +508,7 @@
     <MESSAGE value="что-то шаманила" />
     <MESSAGE value="изменения  для Паши" />
     <MESSAGE value="новое" />
-    <option name="LAST_COMMIT_MESSAGE" value="новое" />
+    <MESSAGE value="ЭТО ЧТО КОНЕЦ?????" />
+    <option name="LAST_COMMIT_MESSAGE" value="ЭТО ЧТО КОНЕЦ?????" />
   </component>
 </project>
