@@ -1,5 +1,4 @@
 import '@/assets/css/reset.css';
-import '@vuepic/vue-datepicker/dist/main.css';
 
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
