@@ -73,6 +73,10 @@ import {
   randomizeSystemTaskRequest,
   updateTaskRequest
 } from '@/api';
+import {
+  changeTypeNotificationRequest,
+  setTypeNotificationRequest
+} from '@/api/user-notifications.js';
 import { PlanTask, TaskList, TasksRefresher } from '@/components';
 import { BaseSelect, LocalTime, PurpleButton } from '@/shared';
 
@@ -121,12 +125,15 @@ const changeTask = (data) => {
             text: sub_task.text
           })
         );
+        setTypeNotificationRequest(response.data.task.id);
       })
       .finally(() => getDailyTasks());
     newTask.value = false;
     return;
   }
-  updateTaskRequest(data.id, data).then(() => getDailyTasks());
+  updateTaskRequest(data.id, data)
+    .then(() => changeTypeNotificationRequest(data.id, data.not_type_id))
+    .finally(() => getDailyTasks());
 };
 const randomizeTask = (id) =>
   randomizeSystemTaskRequest(id).then(() => getDailyTasks());

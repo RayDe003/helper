@@ -64,6 +64,13 @@
       :parameters="priorityParameters"
       name="priority"
       title="Приоритет"
+      class="settings-drop-select"
+    />
+    <drop-select
+      v-model="settingsData.not_type_id"
+      :parameters="notificationParameters"
+      name="priority"
+      title="Частота уведомлений"
     />
     <button class="settings-button" @click="submitSettings">Подтвердить</button>
   </section>
@@ -73,7 +80,7 @@
 import { intlFormat, isToday } from 'date-fns';
 import { computed, reactive, ref } from 'vue';
 
-import { createSubTaskRequest, patchSubTaskRequest } from '@/api/index.js';
+import { createSubTaskRequest, patchSubTaskRequest } from '@/api';
 import { CalendarIcon, CheckListIcon, CrossIcon, DropSelect } from '@/shared';
 
 const props = defineProps({
@@ -92,7 +99,8 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  priority_id: { type: Number, default: null }
+  priority_id: { type: Number, default: null },
+  not_type_id: { type: Number, default: null }
 });
 
 const emits = defineEmits(['change-task']);
@@ -115,13 +123,27 @@ const priorityParameters = [
   }
 ];
 
+const notificationParameters = [
+  {
+    id: 1,
+    value: 1,
+    title: 'Каждый день'
+  },
+  {
+    id: 2,
+    value: 2,
+    title: 'Каждую неделю'
+  }
+];
+
 const settingsData = reactive({
   id: props.id,
   title: props.title,
   description: props.description,
   deadline: props.deadline,
   sub_tasks: props.sub_tasks,
-  priority_id: props.priority_id
+  priority_id: props.priority_id,
+  not_type_id: props.not_type_id
 });
 
 const dateForPreview = computed(() => {
@@ -233,6 +255,10 @@ const clickDatePicker = () => datePicker.value.showPicker();
     & > p > span {
       color: #9747ff;
     }
+  }
+
+  &-drop-select {
+    margin-bottom: 10px;
   }
 
   &-subtasks {
