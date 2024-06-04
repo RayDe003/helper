@@ -7,6 +7,7 @@
       :model-value="modelValue"
       @update:model-value="updateValue"
     />
+    <p v-if="validationError" class="error-message">{{ validationError }}</p>
   </div>
 </template>
 
@@ -30,6 +31,10 @@ defineProps({
   label: {
     type: String,
     default: ''
+  },
+  validationError: {
+    type: String,
+    default: null
   }
 });
 
@@ -52,5 +57,11 @@ const updateValue = (value) => {
     font-size: 20px;
     color: $main-color;
   }
+}
+
+.error-message {
+  color: #a60000;
+  font-size: 14px;
+  font-weight: 500;
 }
 </style>

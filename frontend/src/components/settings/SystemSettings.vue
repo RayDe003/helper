@@ -38,6 +38,7 @@ const settings = ref(null);
 const systemTasks = ref([]);
 
 const changeStatus = ({ id, accept }) => acceptSystemTaskRequest(id, accept);
+
 onClickOutside(settings, () => emits('close-settings'));
 
 onMounted(() => {

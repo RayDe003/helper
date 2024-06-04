@@ -1,26 +1,29 @@
 <template>
-  <base-form @submit-form="sendRequest">
+  <base-form @submit-form="submit">
     <template #labels>
       <form-field
         label="Имя"
         placeholder="Ваше имя"
         type="text"
-        v-model="submitData.login"
-        @update:model-value="error = null"
+        v-model="login"
+        :validation-error="errors.login"
+        @update:model-value="backendError = null"
       />
       <form-field
         label="Электронная почта"
         placeholder="Ваш e-mail"
         type="email"
-        v-model="submitData.email"
-        @update:model-value="error = null"
+        v-model="email"
+        :validation-error="errors.email"
+        @update:model-value="backendError = null"
       />
       <form-field
         label="Пароль"
         placeholder="Придумайте пароль"
         type="password"
-        v-model="submitData.password"
-        @update:model-value="error = null"
+        v-model="password"
+        :validation-error="errors.password"
+        @update:model-value="backendError = null"
       />
     </template>
     <template #buttons>
@@ -29,8 +32,10 @@
         :font-size="20"
         :font-weight="600"
         font-family="second"
+        :disabled="isDisabled"
+        type="submit"
         padding="16px 0"
-        @click="error = null"
+        @click="backendError = null"
       >
         Зарегистрироваться
       </base-button>
@@ -40,37 +45,77 @@
           обработку персональных данных
         </a>
       </p>
-      <p v-if="error" class="error-message">{{ error }}</p>
+      <p v-if="backendError" class="error-message">{{ backendError }}</p>
     </template>
   </base-form>
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue';
+import * as yup from 'yup';
+import { computed, ref } from "vue";
+import { useForm } from 'vee-validate';
 import { useRouter } from 'vue-router';
 
 import { registerUser } from '@/api';
 import { BaseButton, BaseForm, FormField } from '@/shared';
 
-const submitData = reactive({
-  login: '',
-  email: '',
-  password: '',
+const RegisterValidationSchema = yup.object({
+  login:
+    yup
+      .string()
+      .min(3, 'Логин должен быть от 3 до 255 символов')
+      .max(255, 'Пароль должен быть от 3 до 255 символов')
+      .required('Обязательно для заполнения'),
+  email:
+    yup
+      .string()
+      .email('Некорректный email')
+      .max(255)
+      .required('Обязательно для заполнения'),
+  password:
+    yup
+      .string()
+      .min(6, 'Пароль должен быть от 6 до 20 символов')
+      .max(20, 'Пароль должен быть от 6 до 20 символов')
+      .required('Обязательно для заполнения')
+})
+
+const { errors, handleSubmit, defineField } = useForm({
+  validationSchema: RegisterValidationSchema,
+  initialValues: {
+    login: '',
+    email: '',
+    password: '',
+  },
+})
+
+const [login] = defineField('login');
+const [email] = defineField('email');
+const [password] = defineField('password');
+
+const isDisabled = computed(() => {
+  const isError = errors.value.email || errors.value.login || errors.value.password;
+  const isEmpty = !login.value || !password.value || !email.value;
+  return !!isError || !!isEmpty;
 });
 
 const router = useRouter();
-const error = ref(null);
+const backendError = ref(null);
 
-const sendRequest = async () => {
+const sendRequest = async (data) => {
   try {
-    const { errorMessage } = await registerUser(submitData);
-    error.value = errorMessage;
+    const { errorMessage } = await registerUser(data);
+    backendError.value = errorMessage;
   } finally {
-    if (!error.value) {
-      await router.push({ name: 'plans' });
+    if (!backendError.value) {
+      await router.push({ name: 'login' });
     }
   }
 };
+
+const submit = handleSubmit((values) => {
+  sendRequest(values);
+})
 </script>
 
 <style scoped lang="scss">
@@ -86,7 +131,7 @@ const sendRequest = async () => {
 }
 .error-message {
   color: red;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   text-align: center;
 }

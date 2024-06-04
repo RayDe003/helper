@@ -5,6 +5,8 @@
       'base-button_w-full': fullWidth,
       'base-button_transparent': bgTransparent
     }"
+    :disabled="disabled"
+    :type="type"
   >
     <slot />
   </button>
@@ -42,6 +44,14 @@ const props = defineProps({
   borderRadius: {
     type: String,
     default: '8px'
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  type: {
+    type: String,
+    default: 'button'
   }
 });
 const fontSizeStr = computed(() => `${props.fontSize}px`);
@@ -51,6 +61,11 @@ const fontSizeStr = computed(() => `${props.fontSize}px`);
 $font-family: v-bind(fontFamily);
 $font-size: v-bind(fontSizeStr);
 $font-weight: v-bind(fontWeight);
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
 
 .base-button {
   border-radius: v-bind(borderRadius);
