@@ -39,6 +39,7 @@
       :priority_id="priority_id"
       :deadline="deadline"
       :is-new-task="isNewTask"
+      :not_type_id="not_type_id"
       @change-task="changeTask"
       v-else
     />
@@ -105,6 +106,10 @@ const props = defineProps({
   reverse: {
     type: Boolean,
     default: false
+  },
+  not_type_id: {
+    type: Number,
+    default: null
   }
 });
 const emit = defineEmits([

@@ -14,7 +14,7 @@ export const setTypeNotificationRequest = (id, not_type) =>
   );
 
 export const changeTypeNotificationRequest = (id, not_type) =>
-  axios.post(
+  axios.patch(
     apiLink(`tasks/${id}/notification_change`),
     {
       not_type_id: not_type

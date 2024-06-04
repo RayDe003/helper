@@ -40,6 +40,7 @@
       :is_complete="createdTaskData.is_complete"
       :priority_id="createdTaskData.priority_id"
       :deadline="createdTaskData.deadline"
+      :not_type_id="createdTaskData.not_type_id"
       @change-task="changeTask"
       @create-mode-leave="newTask = false"
     />
@@ -125,7 +126,9 @@ const changeTask = (data) => {
             text: sub_task.text
           })
         );
-        setTypeNotificationRequest(response.data.task.id);
+        setTypeNotificationRequest(response.data.task.id, {
+          not_type_id: data.not_type_id
+        });
       })
       .finally(() => getDailyTasks());
     newTask.value = false;
@@ -143,7 +146,8 @@ const createdTaskData = reactive({
   title: 'Новая задача',
   description: 'Описание',
   priority_id: 1,
-  deadline: null
+  deadline: null,
+  not_type_id: null
 });
 const createTask = () => {
   newTask.value = true;

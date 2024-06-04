@@ -9,6 +9,7 @@
       :is_complete="task.is_complete"
       :sub_tasks="task.sub_tasks"
       :priority_id="task.priority_id"
+      :not_type_id="task.not_type_id"
       :deadline="task.deadline"
       :reverse="reverse"
       :mode="mode"

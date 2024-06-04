@@ -22,13 +22,6 @@
         v-model="submitData.password"
         @update:model-value="error = null"
       />
-      <form-field
-        label="Пароль"
-        placeholder="Повторите пароль"
-        type="password"
-        v-model="submitData.password_confirmation"
-        @update:model-value="error = null"
-      />
     </template>
     <template #buttons>
       <base-button
@@ -63,7 +56,6 @@ const submitData = reactive({
   login: '',
   email: '',
   password: '',
-  password_confirmation: ''
 });
 
 const router = useRouter();
